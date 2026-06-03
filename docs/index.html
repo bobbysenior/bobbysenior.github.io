@@ -3,13 +3,12 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Thomas — Portfolio</title>
+        <title>al3ph_zero</title>
         <style>
             :root {
                 --bg: #0a0a0a;
-                --fg: #f2f2f2;
-                --muted: #888;
-                --accent: #fff;
+                --fg: #ffffff;
+                --accent: #22d3ee; /* cyan */
             }
             * {
                 margin: 0;
@@ -26,6 +25,11 @@
                 color: var(--fg);
                 font-family: "Times New Roman", "STIX Two Math", serif;
                 -webkit-font-smoothing: antialiased;
+                line-height: 1.6;
+            }
+            ::selection {
+                background: var(--accent);
+                color: #000;
             }
 
             /* ---------- Écran de chargement ---------- */
@@ -49,79 +53,99 @@
                 height: min(70vmin, 500px);
             }
 
-            /* ---------- Contenu du portfolio ---------- */
+            /* ---------- Contenu ---------- */
             #content {
                 opacity: 0;
                 transition: opacity 1s ease 0.3s;
-                min-height: 100vh;
-                display: flex;
-                flex-direction: column;
             }
             #content.visible {
                 opacity: 1;
             }
 
-            header {
-                flex: 1;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                text-align: center;
-                padding: 2rem;
-            }
-            header .mark {
-                font-size: clamp(3rem, 12vmin, 6rem);
-                line-height: 1;
-                margin-bottom: 1.5rem;
-            }
-            header h1 {
-                font-size: clamp(2rem, 6vw, 3.5rem);
-                font-weight: normal;
-                letter-spacing: 0.02em;
-            }
-            header p.tagline {
-                color: var(--muted);
-                font-size: clamp(1rem, 2.5vw, 1.25rem);
-                margin-top: 0.75rem;
-                max-width: 40ch;
+            .wrap {
+                max-width: 680px;
+                margin: 0 auto;
+                padding: 4rem 1.5rem 3rem;
             }
 
-            nav {
-                display: flex;
-                gap: 2rem;
-                justify-content: center;
-                flex-wrap: wrap;
-                margin-top: 2.5rem;
+            /* ---------- Header ---------- */
+            header {
+                margin-bottom: 4rem;
             }
-            nav a {
+            header .mark {
+                font-size: clamp(3.5rem, 14vmin, 6rem);
+                line-height: 1;
+                color: var(--fg);
+                text-align: center;
+            }
+            header h1 {
+                font-size: clamp(2rem, 7vw, 3rem);
+                font-weight: normal;
+                letter-spacing: 0.02em;
+                margin-top: 0.5rem;
+            }
+            header p.intro {
+                color: var(--fg);
+                font-size: clamp(1.05rem, 2.6vw, 1.3rem);
+                margin-top: 1.25rem;
+                max-width: 46ch;
+            }
+
+            /* ---------- Sections ---------- */
+            section {
+                margin-bottom: 3.5rem;
+            }
+            section h2 {
+                font-size: 1rem;
+                font-weight: normal;
+                text-transform: uppercase;
+                letter-spacing: 0.25em;
+                color: var(--accent);
+                border-bottom: 1px solid var(--accent);
+                padding-bottom: 0.6rem;
+                margin-bottom: 1.5rem;
+            }
+
+            /* Liste de projets : liens simples, pas de cards */
+            ul.projects {
+                list-style: none;
+            }
+            ul.projects li {
+                margin-bottom: 1.5rem;
+            }
+            ul.projects a {
                 color: var(--fg);
                 text-decoration: none;
-                font-size: 1.1rem;
-                padding-bottom: 2px;
+                font-size: 1.3rem;
                 border-bottom: 1px solid transparent;
-                transition:
-                    border-color 0.25s ease,
-                    opacity 0.25s ease;
+                transition: border-color 0.2s ease, color 0.2s ease;
             }
-            nav a:hover {
+            ul.projects a:hover {
+                color: var(--accent);
                 border-color: var(--accent);
             }
-            nav a.disabled {
-                color: var(--muted);
-                pointer-events: none;
+            ul.projects p {
+                color: var(--fg);
+                font-size: 1rem;
+                margin-top: 0.2rem;
             }
-            nav a.disabled::after {
-                content: " (bientôt)";
-                font-size: 0.8em;
-                color: var(--muted);
+
+            /* Contact */
+            .contact a {
+                color: var(--accent);
+                text-decoration: none;
+                border-bottom: 1px solid transparent;
+                transition: border-color 0.2s ease;
+            }
+            .contact a:hover {
+                border-color: var(--accent);
             }
 
             footer {
-                text-align: center;
-                padding: 1.5rem;
-                color: var(--muted);
+                color: var(--fg);
                 font-size: 0.9rem;
+                border-top: 1px solid var(--accent);
+                padding-top: 1.5rem;
             }
         </style>
     </head>
@@ -139,19 +163,60 @@
 
         <!-- ===================== Contenu ===================== -->
         <main id="content">
-            <header>
-                <div class="mark">&#8501;<sub>0</sub></div>
-                <h1>al3ph_zero</h1>
-                <p class="tagline">Portfolio — en construction.</p>
-                <nav>
-                    <a href="#about">À propos</a>
-                    <a href="#projects">Projets</a>
-                    <a class="disabled" href="#blog">Blog</a>
-                    <a href="mailto:bobby@gmail.com">Contact</a>
-                </nav>
-            </header>
+            <div class="wrap">
+                <header>
+                    <div class="mark">&#8501;<sub>0</sub></div>
+                    <h1 style="text-align: center;">al3ph_zero</h1>
+                    <p class="intro">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Sed do eiusmod tempor incididunt ut labore.
+                    </p>
+                </header>
 
-            <footer>&copy; <span id="year"></span> Thomas</footer>
+                <section>
+                    <h2>Projets</h2>
+                    <ul class="projects">
+                        <li>
+                            <a href="#">lorem-ipsum</a>
+                            <p>
+                                Dolor sit amet consectetur, adipiscing elit sed
+                                do eiusmod.
+                            </p>
+                        </li>
+                        <li>
+                            <a href="#">dolor-sit</a>
+                            <p>
+                                Tempor incididunt ut labore et dolore magna
+                                aliqua.
+                            </p>
+                        </li>
+                        <li>
+                            <a href="#">consectetur</a>
+                            <p>
+                                Ut enim ad minim veniam, quis nostrud
+                                exercitation.
+                            </p>
+                        </li>
+                    </ul>
+                </section>
+
+                <section class="contact">
+                    <h2>Contact</h2>
+                    <p>
+                        Lorem ipsum —
+                        <a href="mailto:hello@example.com">hello@example.com</a>
+                    </p>
+                    <p>
+                        <a href="#">github</a> · <a href="#">mastodon</a> ·
+                        <a href="#">rss</a>
+                    </p>
+                </section>
+
+                <footer>
+                    &copy; <span id="year"></span> al3ph_zero — lorem ipsum
+                    dolor.
+                </footer>
+            </div>
         </main>
 
         <script>
@@ -236,22 +301,22 @@
                 const dA = setupDash(aleph);
                 const dZ = setupDash(zero);
                 animate(aleph, dA, {
-                    drawTime: 2200,
-                    fillStart: 1400,
-                    fillTime: 1400,
-                    delay: 200,
+                    drawTime: 1100,
+                    fillStart: 700,
+                    fillTime: 700,
+                    delay: 100,
                 });
                 // le ₀ termine en dernier -> on déclenche la révélation à sa fin
                 animate(
                     zero,
                     dZ,
                     {
-                        drawTime: 2200,
-                        fillStart: 1400,
-                        fillTime: 1400,
-                        delay: 350,
+                        drawTime: 1100,
+                        fillStart: 700,
+                        fillTime: 700,
+                        delay: 175,
                     },
-                    () => setTimeout(reveal, 500),
+                    () => setTimeout(reveal, 250),
                 );
             }
 
