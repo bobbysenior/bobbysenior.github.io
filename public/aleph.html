@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ℵ₀</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 100%; height: 100%; }
+  body {
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  #stage {
+    width: min(90vmin, 700px);
+    height: min(90vmin, 700px);
+  }
+
+  /* Tracé : on dessine d'abord le contour (comme Write), puis on remplit */
+  .glyph path {
+    fill: #fff;
+    stroke: #fff;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    /* dash animé via JS car la longueur dépend du path */
+    fill-opacity: 0;
+  }
+</style>
+</head>
+<body>
+<div id="stage">
+  <!-- viewBox carré ; les glyphes sont positionnés à la main -->
+  <svg id="svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+    <!--
+      Les deux <text> servent à générer les vrais contours de glyphes,
+      qu'on convertit en <path> au chargement pour pouvoir les animer.
+    -->
+    <g class="glyph" id="aleph"></g>
+    <g class="glyph" id="zero"></g>
+
+    <!-- texte de référence, masqué, sert juste à mesurer/extraire -->
+    <text id="ref-aleph" x="0" y="0" font-family="'Times New Roman', serif"
+          font-size="260" fill="none" visibility="hidden">&#8501;</text>
+    <text id="ref-zero" x="0" y="0" font-family="'Times New Roman', serif"
+          font-size="120" fill="none" visibility="hidden">&#8320;</text>
+  </svg>
+</div>
+
+<script>
+/*
+  Stratégie : SVG ne permet pas d'animer directement le tracé d'un <text>.
+  On laisse donc le navigateur rendre le glyphe via <text>, on n'en a pas
+  besoin comme path ici : on anime à la place l'apparition "façon Write" de
+  Manim = tracé du contour (stroke) puis remplissage (fill) progressif.
+
+  Comme on ne peut pas facilement extraire l'outline d'un <text> en pur SVG
+  cross-navigateur, on rend directement les <text> et on anime
+  stroke-dashoffset sur eux : les navigateurs modernes savent appliquer
+  stroke-dasharray à du texte.
+*/
+
+const ALEPH = '\u2135';   // ℵ
+const ZERO  = '\u2080';   // ₀ (indice)
+
+const NS = 'http://www.w3.org/2000/svg';
+const svg = document.getElementById('svg');
+
+// Crée un <text> stylé pour le tracé animé
+function makeStrokedText(ch, size, x, y) {
+  const t = document.createElementNS(NS, 'text');
+  t.setAttribute('x', x);
+  t.setAttribute('y', y);
+  t.setAttribute('font-family', "'Times New Roman', 'STIX Two Math', serif");
+  t.setAttribute('font-size', size);
+  t.setAttribute('fill', '#fff');
+  t.setAttribute('stroke', '#fff');
+  t.setAttribute('stroke-width', '1.2');
+  t.setAttribute('stroke-linejoin', 'round');
+  t.setAttribute('stroke-linecap', 'round');
+  t.setAttribute('text-anchor', 'middle');
+  t.textContent = ch;
+  return t;
+}
+
+// ℵ centré, gros ; ₀ collé en bas-droite (comme next_to(aleph, DR))
+const aleph = makeStrokedText(ALEPH, 230, 175, 250);
+const zero  = makeStrokedText(ZERO, 230, 285, 300);
+svg.appendChild(aleph);
+svg.appendChild(zero);
+
+// Mesure la "longueur" approximative du tracé via la bbox pour caler le dash.
+// getComputedTextLength ne donne pas le périmètre, donc on prend une
+// valeur généreuse basée sur la bbox -> garantit dashoffset suffisant.
+function setupDash(el) {
+  const box = el.getBBox();
+  const dash = (box.width + box.height) * 3; // marge large
+  el.style.strokeDasharray = dash;
+  el.style.strokeDashoffset = dash;
+  el.style.fillOpacity = 0;
+  return dash;
+}
+
+// Animation : Write = tracé du contour puis remplissage
+function animate(el, dash, { drawTime, fillStart, fillTime, delay }) {
+  const start = performance.now() + delay;
+  function frame(now) {
+    const t = now - start;
+    if (t < 0) { requestAnimationFrame(frame); return; }
+    // phase tracé du contour
+    const dp = Math.min(t / drawTime, 1);
+    const e  = dp < 0.5 ? 2*dp*dp : -1 + (4 - 2*dp)*dp; // easeInOut
+    el.style.strokeDashoffset = dash * (1 - e);
+    // phase remplissage (chevauche un peu, comme Manim)
+    if (t > fillStart) {
+      const fp = Math.min((t - fillStart) / fillTime, 1);
+      el.style.fillOpacity = fp;
+    }
+    if (dp < 1 || (t - fillStart) < fillTime) requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+}
+
+// Les polices doivent être prêtes avant de mesurer les bbox
+function run() {
+  const dA = setupDash(aleph);
+  const dZ = setupDash(zero);
+  // run_time=3 dans Manim -> ~3000ms ; ₀ démarre presque en même temps
+  animate(aleph, dA, { drawTime: 2200, fillStart: 1400, fillTime: 1400, delay: 200 });
+  animate(zero,  dZ, { drawTime: 2200, fillStart: 1400, fillTime: 1400, delay: 350 });
+}
+
+if (document.fonts && document.fonts.ready) {
+  document.fonts.ready.then(run);
+} else {
+  window.addEventListener('load', run);
+}
+</script>
+</body>
+</html>
