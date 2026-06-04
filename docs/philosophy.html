@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>al3ph_zero — Philosophy</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <main>
+            <div class="wrap">
+                <nav class="nav">
+                    <a href="index.html" class="brand">&#8501;<sub>0</sub></a>
+                    <div class="nav-links">
+                        <a href="index.html">Home</a>
+                        <a href="index.html#projects">Projects</a>
+                        <a href="philosophy.html" class="active">Philosophy</a>
+                        <a href="blog.html">Blog</a>
+                    </div>
+                </nav>
+
+                <header>
+                    <h1>Philosophy</h1>
+                    <p class="back">
+                        <a href="index.html">&larr; Back to home</a>
+                    </p>
+                </header>
+
+                <blockquote class="epigraph">
+                    &laquo;&nbsp;Je n'ai qu'une philosophie&nbsp;: être accepté comme je suis.&nbsp;&raquo;
+                </blockquote>
+
+                <section>
+                    <h2>How I work</h2>
+                    <p>
+                        I like building things that are simple before they are
+                        clever. I would rather ship something small that I fully
+                        understand than something large that I only half
+                        control. Most of my projects start as a curiosity and
+                        grow only as far as they stay fun to maintain.
+                    </p>
+                    <p>
+                        I care about clear code, honest documentation, and tools
+                        that respect the people who use them.
+                    </p>
+                </section>
+
+                <section>
+                    <h2>On artificial intelligence</h2>
+                    <p>
+                        AI is the most interesting tool of my generation, and
+                        also the easiest to misuse. I'm still studying computer
+                        science, and I think relying on AI can be detrimental to
+                        the learning process if it isn't used carefully. I like
+                        coding, and I don't want a machine to do it for me &mdash;
+                        in that sense, I see myself as a <strong>code artisan</strong>.
+                    </p>
+                    <p>
+                        That said, I recognize that AI has revolutionized the
+                        industry, and I understand its importance in modern
+                        development, so I'm happy to use it in a professional
+                        context. For my own projects, I always make it clear
+                        when AI was involved. But I still code by hand, because I
+                        like it.
+                    </p>
+
+                </section>
+
+                <footer>
+                    &copy; <span id="year"></span> Thomas MEZINO.
+                    <a href="index.html">Home</a>
+                </footer>
+            </div>
+        </main>
+
+        <script>
+            document.getElementById("year").textContent =
+                new Date().getFullYear();
+        </script>
+    </body>
+</html>

@@ -1,0 +1,253 @@
+:root {
+    --bg: #0a0a0a;
+    --fg: #ffffff;
+    --accent: #22d3ee; /* cyan */
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: "Times New Roman", "STIX Two Math", serif;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+}
+::selection {
+    background: var(--accent);
+    color: #000;
+}
+
+/* ---------- Écran de chargement (page d'accueil) ---------- */
+#loader {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    z-index: 100;
+    transition: opacity 0.8s ease;
+}
+#loader.done {
+    opacity: 0;
+    pointer-events: none;
+}
+#stage {
+    width: min(70vmin, 500px);
+    height: min(70vmin, 500px);
+}
+
+/* ---------- Contenu ---------- */
+#content {
+    opacity: 0;
+    transition: opacity 1s ease 0.3s;
+}
+#content.visible {
+    opacity: 1;
+}
+
+.wrap {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem 3rem;
+}
+
+/* ---------- Navigation ---------- */
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 3.5rem;
+}
+.nav .brand {
+    font-size: 1.6rem;
+    line-height: 1;
+    color: var(--fg);
+    text-decoration: none;
+}
+.nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+.nav-links a {
+    color: var(--fg);
+    text-decoration: none;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease, color 0.2s ease;
+}
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
+/* ---------- Header ---------- */
+header {
+    margin-bottom: 4rem;
+}
+header .mark {
+    font-size: clamp(3.5rem, 14vmin, 6rem);
+    line-height: 1;
+    color: var(--fg);
+    text-align: center;
+}
+header h1 {
+    font-size: clamp(2rem, 7vw, 3rem);
+    font-weight: normal;
+    letter-spacing: 0.02em;
+    margin-top: 0.5rem;
+}
+header p.intro {
+    color: var(--fg);
+    font-size: clamp(1.05rem, 2.6vw, 1.3rem);
+    margin-top: 1.25rem;
+    text-align: justify;
+}
+header p.back {
+    margin-top: 1rem;
+}
+header p.back a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+}
+header p.back a:hover {
+    border-color: var(--accent);
+}
+
+/* ---------- Exergue / citation ---------- */
+.epigraph {
+    font-style: italic;
+    font-size: 1.25rem;
+    color: var(--fg);
+    text-align: center;
+    max-width: 36ch;
+    margin: 0 auto 4rem;
+    padding-left: 0;
+    border-left: 0;
+    opacity: 0.85;
+}
+
+/* ---------- Sections ---------- */
+section {
+    margin-bottom: 3.5rem;
+}
+section h2 {
+    font-size: 1rem;
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--accent);
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 0.6rem;
+    margin-bottom: 1.5rem;
+}
+section p {
+    color: var(--fg);
+    margin-bottom: 1rem;
+    text-align: justify;
+}
+section a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+}
+section a:hover {
+    border-color: var(--accent);
+}
+
+/* Liste de projets : liens simples, pas de cards */
+ul.projects {
+    list-style: none;
+}
+ul.projects li {
+    padding-bottom: 2.5rem;
+    margin-bottom: 2.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+ul.projects li:last-child {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border-bottom: none;
+}
+ul.projects a {
+    color: var(--fg);
+    text-decoration: none;
+    font-size: 1.3rem;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease, color 0.2s ease;
+}
+ul.projects a:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+}
+ul.projects p {
+    color: var(--fg);
+    font-size: 1rem;
+    margin-top: 0.2rem;
+    text-align: justify;
+}
+ul.projects img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin-top: 0.8rem;
+    border: 1px solid var(--accent);
+}
+/* Captures côte à côte */
+ul.projects .shots {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.8rem;
+    margin-top: 0.8rem;
+}
+ul.projects .shots img {
+    flex: 1 1 0;
+    min-width: 240px;
+    margin-top: 0;
+}
+
+/* Contact */
+.contact a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+}
+.contact a:hover {
+    border-color: var(--accent);
+}
+
+footer {
+    color: var(--fg);
+    font-size: 0.9rem;
+    border-top: 1px solid var(--accent);
+    padding-top: 1.5rem;
+}
+footer a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+}
+footer a:hover {
+    border-color: var(--accent);
+}
