@@ -3,3 +3,11 @@ docs/images/*.png
 
 # Windows/WSL alternate data stream metadata
 *:Zone.Identifier
+
+# Jekyll build artifacts
+docs/_site/
+docs/.jekyll-cache/
+docs/.jekyll-metadata
+.bundle/
+vendor/
+Gemfile.lock
