@@ -118,6 +118,16 @@ header h1 {
     letter-spacing: 0.02em;
     margin-top: 0.5rem;
 }
+header.hero h1 {
+    text-align: center;
+}
+header.hero p.handle {
+    text-align: center;
+    margin-top: 0.35rem;
+    color: var(--accent);
+    font-size: 1rem;
+    letter-spacing: 0.18em;
+}
 header p.intro {
     color: var(--fg);
     font-size: clamp(1.05rem, 2.6vw, 1.3rem);
@@ -151,6 +161,15 @@ header p.back a:hover {
 }
 
 /* ---------- Bandeau de logos (marquee) ---------- */
+.logos-label {
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: var(--fg);
+    margin-bottom: 1.25rem;
+}
 .logos {
     overflow: hidden;
     margin-bottom: 4rem;
