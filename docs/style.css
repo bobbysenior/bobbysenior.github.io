@@ -303,6 +303,42 @@ ul.projects .shots img {
     margin-top: 0;
 }
 
+/* ---------- Palmarès CTF ---------- */
+ul.ctf {
+    list-style: none;
+}
+ul.ctf li {
+    padding-bottom: 1.25rem;
+    margin-bottom: 1.25rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+ul.ctf li:last-child {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border-bottom: none;
+}
+ul.ctf .ctf__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+}
+ul.ctf .ctf__name {
+    font-size: 1.3rem;
+    color: var(--fg);
+}
+ul.ctf .ctf__rank {
+    color: var(--accent);
+    white-space: nowrap;
+}
+ul.ctf .ctf__meta {
+    color: var(--fg);
+    opacity: 0.75;
+    font-size: 0.95rem;
+    margin-top: 0.2rem;
+}
+
 /* Contact */
 .contact a {
     color: var(--accent);
