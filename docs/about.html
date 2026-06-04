@@ -1,121 +1,73 @@
-<!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>al3ph_zero — About</title>
-        <link rel="stylesheet" href="style.css" />
-    </head>
-    <body>
-        <main>
-            <div class="wrap">
-                <nav class="nav">
-                    <a href="index.html" class="brand">&#8501;<sub>0</sub></a>
-                    <div class="nav-links">
-                        <a href="index.html">Home</a>
-                        <a href="index.html#projects">Projects</a>
-                        <a href="index.html#ctf">CTF</a>
-                        <a href="about.html" class="active">About</a>
-                        <a href="blog.html">Blog</a>
-                    </div>
-                </nav>
+---
+layout: page
+title: About
+nav_active: about
+---
+<blockquote class="epigraph">
+    &laquo;&nbsp;Simplicity is the ultimate sophistication.&nbsp;&raquo;
+    <cite>&mdash; attributed to Leonardo da Vinci</cite>
+</blockquote>
 
-                <header>
-                    <h1>About</h1>
-                    <p class="back">
-                        <a href="index.html">&larr; Back to home</a>
-                    </p>
-                </header>
+<!-- TODO: personnalise cette bio avec tes propres mots. -->
+<section>
+    <h2>Who I am</h2>
+    <p>
+        I'm Thomas, an engineering student who likes computer science a little
+        too much. I spend my time building small tools, breaking things to
+        understand how they work, and learning whatever the next project happens
+        to require.
+    </p>
+</section>
 
-                <blockquote class="epigraph">
-                    &laquo;&nbsp;Simplicity is the ultimate sophistication.&nbsp;&raquo;
-                    <cite>&mdash; attributed to Leonardo da Vinci</cite>
-                </blockquote>
+<!-- TODO: ajuste la raison du pseudo si elle ne correspond pas. -->
+<section>
+    <h2>Why &laquo;&nbsp;al3ph_zero&nbsp;&raquo;</h2>
+    <p>
+        The name is a play on <strong>&#8501;<sub>0</sub></strong> (aleph-null),
+        the symbol mathematicians use for the smallest infinity &mdash; the size
+        of the set of natural numbers, the first of Cantor's transfinite
+        cardinals.
+    </p>
+    <p>
+        I like what it stands for: a starting point that is already infinite.
+        Zero is where you begin; aleph-null is how far you can go. It felt like
+        the right metaphor for someone who is still at the beginning but curious
+        about everything &mdash; with a bit of leetspeak
+        (&laquo;&nbsp;al3ph&nbsp;&raquo;) on top, because old habits die hard.
+    </p>
+    <p>
+        As you can imagine, I'm a math enthusiast, hence I have the obligation to
+        make mathematical references in the content I post online.
+    </p>
+</section>
 
-                <!-- TODO: personnalise cette bio avec tes propres mots. -->
-                <section>
-                    <h2>Who I am</h2>
-                    <p>
-                        I'm Thomas, an engineering student who likes computer
-                        science a little too much. I spend my time building
-                        small tools, breaking things to understand how they
-                        work, and learning whatever the next project happens to
-                        require.
-                    </p>
-                </section>
+<section>
+    <h2>How I work</h2>
+    <p>
+        I like building things that are simple before they are clever. I would
+        rather ship something small that I fully understand than something large
+        that I only half control. Most of my projects start as a curiosity and
+        grow only as far as they stay fun to maintain.
+    </p>
+    <p>
+        I care about clear code, honest documentation, and tools that respect
+        the people who use them.
+    </p>
+</section>
 
-                <!-- TODO: ajuste la raison du pseudo si elle ne correspond pas. -->
-                <section>
-                    <h2>Why &laquo;&nbsp;al3ph_zero&nbsp;&raquo;</h2>
-                    <p>
-                        The name is a play on
-                        <strong>&#8501;<sub>0</sub></strong> (aleph-null), the
-                        symbol mathematicians use for the smallest infinity
-                        &mdash; the size of the set of natural numbers, the
-                        first of Cantor's transfinite cardinals. 
-                    </p>
-                    <p>
-                        I like what it stands for: a starting point that is
-                        already infinite. Zero is where you begin; aleph-null is
-                        how far you can go. It felt like the right metaphor for
-                        someone who is still at the beginning but curious about
-                        everything &mdash; with a bit of leetspeak
-                        (&laquo;&nbsp;al3ph&nbsp;&raquo;) on top, because old
-                        habits die hard.
-                    </p>
-                    <p>
-                        As you can imagine, I'm a math enthusiast, hence I have
-                        the obligation to make mathematical references in the 
-                        content I post online.
-                    </p>
-                </section>
-
-                <section>
-                    <h2>How I work</h2>
-                    <p>
-                        I like building things that are simple before they are
-                        clever. I would rather ship something small that I fully
-                        understand than something large that I only half
-                        control. Most of my projects start as a curiosity and
-                        grow only as far as they stay fun to maintain.
-                    </p>
-                    <p>
-                        I care about clear code, honest documentation, and tools
-                        that respect the people who use them.
-                    </p>
-                </section>
-
-                <section>
-                    <h2>On artificial intelligence</h2>
-                    <p>
-                        AI is the most interesting tool of my generation, and
-                        also the easiest to misuse. I'm still studying computer
-                        science, and I think relying on AI can be detrimental to
-                        the learning process if it isn't used carefully. I like
-                        coding, and I don't want a machine to do it for me
-                        &mdash; in that sense, I see myself as a
-                        <strong>code artisan</strong>.
-                    </p>
-                    <p>
-                        That said, I recognize that AI has revolutionized the
-                        industry, and I understand its importance in modern
-                        development, so I'm happy to use it in a professional
-                        context. For my own projects, I always make it clear
-                        when AI was involved. But I still code by hand, because I
-                        like it.
-                    </p>
-                </section>
-
-                <footer>
-                    &copy; <span id="year"></span> Thomas MEZINO.
-                    <a href="legal-mentions.html">Legal mentions</a>
-                </footer>
-            </div>
-        </main>
-
-        <script>
-            document.getElementById("year").textContent =
-                new Date().getFullYear();
-        </script>
-    </body>
-</html>
+<section>
+    <h2>On artificial intelligence</h2>
+    <p>
+        AI is the most interesting tool of my generation, and also the easiest
+        to misuse. I'm still studying computer science, and I think relying on AI
+        can be detrimental to the learning process if it isn't used carefully. I
+        like coding, and I don't want a machine to do it for me &mdash; in that
+        sense, I see myself as a <strong>code artisan</strong>.
+    </p>
+    <p>
+        That said, I recognize that AI has revolutionized the industry, and I
+        understand its importance in modern development, so I'm happy to use it
+        in a professional context. For my own projects, I always make it clear
+        when AI was involved. But I still code by hand, because I like it.
+    </p>
+</section>

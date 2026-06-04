@@ -1,51 +1,27 @@
-<!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>al3ph_zero — Blog</title>
-        <link rel="stylesheet" href="style.css" />
-    </head>
-    <body>
-        <main>
-            <div class="wrap">
-                <nav class="nav">
-                    <a href="index.html" class="brand">&#8501;<sub>0</sub></a>
-                    <div class="nav-links">
-                        <a href="index.html">Home</a>
-                        <a href="index.html#projects">Projects</a>
-                        <a href="index.html#ctf">CTF</a>
-                        <a href="about.html">About</a>
-                        <a href="blog.html" class="active">Blog</a>
-                    </div>
-                </nav>
-
-                <header>
-                    <h1>Blog</h1>
-                    <p class="back">
-                        <a href="index.html">&larr; Back to home</a>
-                    </p>
-                </header>
-
-                <section>
-                    <h2>Coming soon</h2>
-                    <p>
-                        Nothing here yet. I plan to write about my projects,
-                        things I learn, and a few thoughts along the way. Check
-                        back later.
-                    </p>
-                </section>
-
-                <footer>
-                    &copy; <span id="year"></span> Thomas MEZINO.
-                    <a href="legal-mentions.html">Legal mentions</a>
-                </footer>
-            </div>
-        </main>
-
-        <script>
-            document.getElementById("year").textContent =
-                new Date().getFullYear();
-        </script>
-    </body>
-</html>
+---
+layout: page
+title: Blog
+nav_active: blog
+permalink: /blog/
+---
+{% if site.posts.size > 0 %}
+<ul class="projects">
+    {% for post in site.posts %}
+    <li>
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        <p class="post-date">{{ post.date | date: "%B %-d, %Y" }}</p>
+        {% if post.description %}
+        <p>{{ post.description }}</p>
+        {% endif %}
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<section>
+    <h2>Coming soon</h2>
+    <p>
+        Nothing here yet. I plan to write about my projects, things I learn, and
+        a few thoughts along the way. Check back later.
+    </p>
+</section>
+{% endif %}
