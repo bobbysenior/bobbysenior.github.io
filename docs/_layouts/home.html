@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+    {% include head.html %}
+    <body>
+        <!-- ===================== Loader (animation ℵ₀) ===================== -->
+        <div id="loader">
+            <div id="stage">
+                <svg
+                    id="svg"
+                    viewBox="0 0 400 400"
+                    xmlns="http://www.w3.org/2000/svg"
+                ></svg>
+            </div>
+        </div>
+
+        <!-- ===================== Contenu ===================== -->
+        <main id="content">
+            <div class="wrap">
+                {% include nav.html %}
+                {{ content }}
+                {% include footer.html %}
+            </div>
+        </main>
+
+        <script>
+            const ALEPH = "ℵ";
+            const ZERO = "₀";
+
+            const NS = "http://www.w3.org/2000/svg";
+            const svg = document.getElementById("svg");
+
+            function makeStrokedText(ch, size, x, y) {
+                const t = document.createElementNS(NS, "text");
+                t.setAttribute("x", x);
+                t.setAttribute("y", y);
+                t.setAttribute(
+                    "font-family",
+                    "'Times New Roman', 'STIX Two Math', serif",
+                );
+                t.setAttribute("font-size", size);
+                t.setAttribute("fill", "#fff");
+                t.setAttribute("stroke", "#fff");
+                t.setAttribute("stroke-width", "1.2");
+                t.setAttribute("stroke-linejoin", "round");
+                t.setAttribute("stroke-linecap", "round");
+                t.setAttribute("text-anchor", "middle");
+                t.textContent = ch;
+                return t;
+            }
+
+            const aleph = makeStrokedText(ALEPH, 230, 175, 250);
+            const zero = makeStrokedText(ZERO, 230, 285, 300);
+            svg.appendChild(aleph);
+            svg.appendChild(zero);
+
+            function setupDash(el) {
+                const box = el.getBBox();
+                const dash = (box.width + box.height) * 3;
+                el.style.strokeDasharray = dash;
+                el.style.strokeDashoffset = dash;
+                el.style.fillOpacity = 0;
+                return dash;
+            }
+
+            function animate(
+                el,
+                dash,
+                { drawTime, fillStart, fillTime, delay },
+                onEnd,
+            ) {
+                const start = performance.now() + delay;
+                function frame(now) {
+                    const t = now - start;
+                    if (t < 0) {
+                        requestAnimationFrame(frame);
+                        return;
+                    }
+                    const dp = Math.min(t / drawTime, 1);
+                    const e = dp < 0.5 ? 2 * dp * dp : -1 + (4 - 2 * dp) * dp; // easeInOut
+                    el.style.strokeDashoffset = dash * (1 - e);
+                    if (t > fillStart) {
+                        const fp = Math.min((t - fillStart) / fillTime, 1);
+                        el.style.fillOpacity = fp;
+                    }
+                    if (dp < 1 || t - fillStart < fillTime) {
+                        requestAnimationFrame(frame);
+                    } else if (onEnd) {
+                        onEnd();
+                    }
+                }
+                requestAnimationFrame(frame);
+            }
+
+            function reveal() {
+                const loader = document.getElementById("loader");
+                const content = document.getElementById("content");
+                loader.classList.add("done");
+                content.classList.add("visible");
+                setTimeout(() => loader.remove(), 900);
+            }
+
+            function run() {
+                const dA = setupDash(aleph);
+                const dZ = setupDash(zero);
+                animate(aleph, dA, {
+                    drawTime: 1100,
+                    fillStart: 700,
+                    fillTime: 700,
+                    delay: 100,
+                });
+                // le ₀ termine en dernier -> on déclenche la révélation à sa fin
+                animate(
+                    zero,
+                    dZ,
+                    {
+                        drawTime: 1100,
+                        fillStart: 700,
+                        fillTime: 700,
+                        delay: 175,
+                    },
+                    () => setTimeout(reveal, 250),
+                );
+            }
+
+            function skipLoader() {
+                const loader = document.getElementById("loader");
+                const content = document.getElementById("content");
+                content.style.transition = "none";
+                content.classList.add("visible");
+                if (loader) loader.remove();
+            }
+
+            // L'animation ne se joue qu'une fois par session ; on l'ignore
+            // ensuite (navigation, retour à l'accueil).
+            if (sessionStorage.getItem("introPlayed")) {
+                skipLoader();
+            } else {
+                sessionStorage.setItem("introPlayed", "1");
+                if (document.fonts && document.fonts.ready) {
+                    document.fonts.ready.then(run);
+                } else {
+                    window.addEventListener("load", run);
+                }
+            }
+        </script>
+    </body>
+</html>
