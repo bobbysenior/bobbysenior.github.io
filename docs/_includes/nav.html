@@ -1,0 +1,10 @@
+<nav class="nav">
+    <a href="{{ '/' | relative_url }}" class="brand">&#8501;<sub>0</sub></a>
+    <div class="nav-links">
+        <a href="{{ '/' | relative_url }}"{% if page.nav_active == "home" %} class="active"{% endif %}>Home</a>
+        <a href="{{ '/' | relative_url }}#projects">Projects</a>
+        <a href="{{ '/' | relative_url }}#ctf">CTF</a>
+        <a href="{{ '/about/' | relative_url }}"{% if page.nav_active == "about" %} class="active"{% endif %}>About</a>
+        <a href="{{ '/blog/' | relative_url }}"{% if page.nav_active == "blog" %} class="active"{% endif %}>Blog</a>
+    </div>
+</nav>

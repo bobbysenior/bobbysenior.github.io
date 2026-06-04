@@ -1,0 +1,8 @@
+<footer>
+    &copy; {{ site.time | date: "%Y" }} Thomas MEZINO.
+    {% if page.nav_active == "legal" %}
+        <a href="{{ '/' | relative_url }}">Home</a>
+    {% else %}
+        <a href="{{ '/legal-mentions/' | relative_url }}">Legal mentions</a>
+    {% endif %}
+</footer>
