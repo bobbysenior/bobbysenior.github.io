@@ -159,6 +159,15 @@ header p.back a:hover {
     border-left: 0;
     opacity: 0.85;
 }
+.epigraph cite {
+    display: block;
+    margin-top: 0.6rem;
+    font-style: normal;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+    opacity: 0.9;
+}
 
 /* ---------- Bandeau de logos (marquee) ---------- */
 .logos-label {
