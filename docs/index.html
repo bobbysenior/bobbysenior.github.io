@@ -63,7 +63,7 @@
             }
 
             .wrap {
-                max-width: 680px;
+                max-width: 780px;
                 margin: 0 auto;
                 padding: 4rem 1.5rem 3rem;
             }
@@ -88,7 +88,7 @@
                 color: var(--fg);
                 font-size: clamp(1.05rem, 2.6vw, 1.3rem);
                 margin-top: 1.25rem;
-                max-width: 46ch;
+                text-align: justify;
             }
 
             /* ---------- Sections ---------- */
@@ -111,7 +111,14 @@
                 list-style: none;
             }
             ul.projects li {
-                margin-bottom: 1.5rem;
+                padding-bottom: 2.5rem;
+                margin-bottom: 2.5rem;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            }
+            ul.projects li:last-child {
+                padding-bottom: 0;
+                margin-bottom: 0;
+                border-bottom: none;
             }
             ul.projects a {
                 color: var(--fg);
@@ -128,6 +135,27 @@
                 color: var(--fg);
                 font-size: 1rem;
                 margin-top: 0.2rem;
+                text-align: justify;
+            }
+            ul.projects img {
+                display: block;
+                max-width: 100%;
+                height: auto;
+                margin-top: 0.8rem;
+                border: 1px solid var(--accent);
+            }
+            /* Captures côte à côte */
+            ul.projects .shots {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                gap: 0.8rem;
+                margin-top: 0.8rem;
+            }
+            ul.projects .shots img {
+                flex: 1 1 0;
+                min-width: 240px;
+                margin-top: 0;
             }
 
             /* Contact */
@@ -147,6 +175,17 @@
                 border-top: 1px solid var(--accent);
                 padding-top: 1.5rem;
             }
+            /* Contact */
+            footer a {
+                color: var(--accent);
+                text-decoration: none;
+                border-bottom: 1px solid transparent;
+                transition: border-color 0.2s ease;
+            }
+            footer a:hover {
+                border-color: var(--accent);
+            }
+
         </style>
     </head>
     <body>
@@ -168,34 +207,74 @@
                     <div class="mark">&#8501;<sub>0</sub></div>
                     <h1 style="text-align: center;">al3ph_zero</h1>
                     <p class="intro">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Sed do eiusmod tempor incididunt ut labore.
+                        Hey! I'm an engineering student passionate about computer science. On this page, you'll find
+                        informations about my school projects, personal projects, as well as contact  information.
                     </p>
                 </header>
 
                 <section>
-                    <h2>Projets</h2>
+                    <h2>Projects</h2>
                     <ul class="projects">
                         <li>
-                            <a href="#">lorem-ipsum</a>
+                            <a href="https://github.com/bobbysenior/uml2code-mirror">uml2code</a>
                             <p>
-                                Dolor sit amet consectetur, adipiscing elit sed
-                                do eiusmod.
+                                A multi-language code generator that turns
+                                PlantUML class diagrams into object-oriented
+                                source code in C++, Java and Python. It parses
+                                classes, interfaces, enumerations and the usual
+                                relationships (inheritance, implementation,
+                                composition, aggregation and association), and
+                                relies on the Abstract Factory pattern to keep
+                                diagram parsing fully decoupled from
+                                language-specific generation. An academic
+                                project carried out by a team of three.
                             </p>
+                            <img
+                                src="https://raw.githubusercontent.com/bobbysenior/uml2code-mirror/main/uml_diagrams/core_diagram.png"
+                                alt="uml2code core class diagram"
+                            />
                         </li>
                         <li>
-                            <a href="#">dolor-sit</a>
+                            <a href="https://github.com/bobbysenior/ndi-ees-meci">Sésame</a>
                             <p>
-                                Tempor incididunt ut labore et dolore magna
-                                aliqua.
+                                An alternative authentication system that
+                                replaces the usual alphanumeric password with a
+                                culinary one: instead of typing characters, you
+                                build a recipe by dragging and dropping
+                                ingredients, each one mapping to a character.
+                                The idea is to rely on procedural memory rather
+                                than rote recall. Built with a Laravel backend
+                                and vanilla JavaScript drag-and-drop during the
+                                Nuit de l'Info hackathon.
                             </p>
+                            <div class="shots">
+                                <img
+                                    src="images/sesame_index.png"
+                                    alt="Sésame home page"
+                                />
+                                <img
+                                    src="images/sesame_login.png"
+                                    alt="Sésame login page"
+                                />
+                            </div>
                         </li>
                         <li>
-                            <a href="#">consectetur</a>
+                            <a href="https://github.com/bobbysenior/quizzia-vibe">Quizia</a>
                             <p>
-                                Ut enim ad minim veniam, quis nostrud
-                                exercitation.
+                                An AI-powered quiz application: describe a topic
+                                and a number of questions, and the AI writes the
+                                whole quiz in seconds, ready to share or keep
+                                private. Quizzes can also be built by hand, and a
+                                public catalog offers search, filtering and
+                                gameplay tracking. Built with Next.js, React,
+                                TypeScript and Tailwind CSS on top of Supabase,
+                                with question generation powered by the Cerebras
+                                Cloud SDK.
                             </p>
+                            <img
+                                src="images/quizzia.png"
+                                alt="Quizia landing page"
+                            />
                         </li>
                     </ul>
                 </section>
@@ -203,19 +282,16 @@
                 <section class="contact">
                     <h2>Contact</h2>
                     <p>
-                        Lorem ipsum —
-                        <a href="mailto:hello@example.com">hello@example.com</a>
+                        Professional mail —
+                        <a href="mailto:al3ph_0@proton.me">al3ph_0@proton.me</a>
                     </p>
                     <p>
-                        <a href="#">github</a> · <a href="#">mastodon</a> ·
-                        <a href="#">rss</a>
+                        <a href="https://github.com/bobbysenior">Github</a>
                     </p>
                 </section>
 
                 <footer>
-                    &copy; <span id="year"></span> al3ph_zero — lorem ipsum
-                    dolor.
-                </footer>
+                    &copy; <span id="year"></span> Thomas MEZINO. <a href="legal-mentions.html">Legal mentions</a>
             </div>
         </main>
 
