@@ -76,11 +76,11 @@
                             </p>
                             <div class="shots">
                                 <img
-                                    src="images/sesame_index.png"
+                                    src="images/sesame_index.webp"
                                     alt="Sésame home page"
                                 />
                                 <img
-                                    src="images/sesame_login.png"
+                                    src="images/sesame_login.webp"
                                     alt="Sésame login page"
                                 />
                             </div>
@@ -99,7 +99,7 @@
                                 Cloud SDK.
                             </p>
                             <img
-                                src="images/quizzia.png"
+                                src="images/quizzia.webp"
                                 alt="Quizia landing page"
                             />
                         </li>
@@ -222,13 +222,28 @@
                 );
             }
 
+            function skipLoader() {
+                const loader = document.getElementById("loader");
+                const content = document.getElementById("content");
+                content.style.transition = "none";
+                content.classList.add("visible");
+                if (loader) loader.remove();
+            }
+
             document.getElementById("year").textContent =
                 new Date().getFullYear();
 
-            if (document.fonts && document.fonts.ready) {
-                document.fonts.ready.then(run);
+            // L'animation ne se joue qu'une fois par session ; on l'ignore
+            // ensuite (navigation, retour à l'accueil).
+            if (sessionStorage.getItem("introPlayed")) {
+                skipLoader();
             } else {
-                window.addEventListener("load", run);
+                sessionStorage.setItem("introPlayed", "1");
+                if (document.fonts && document.fonts.ready) {
+                    document.fonts.ready.then(run);
+                } else {
+                    window.addEventListener("load", run);
+                }
             }
         </script>
     </body>

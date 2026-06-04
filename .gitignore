@@ -1,0 +1,5 @@
+# Source PNG screenshots — served as optimized WebP instead
+docs/images/*.png
+
+# Windows/WSL alternate data stream metadata
+*:Zone.Identifier
