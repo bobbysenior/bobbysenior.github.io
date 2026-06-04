@@ -1,0 +1,23 @@
+title: al3ph_zero
+description: Portfolio of Thomas Mezino (al3ph_zero)
+
+# GitHub Pages project site is served under /portfolio/
+url: "https://bobbysenior.github.io"
+baseurl: ""
+
+markdown: kramdown
+highlighter: rouge
+
+# Pretty URLs for blog posts: /blog/<title>/
+permalink: /blog/:title/
+
+kramdown:
+  input: GFM
+
+# Files Jekyll should not copy into the built site
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - README.md
+  - .claude

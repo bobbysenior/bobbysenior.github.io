@@ -1,325 +1,145 @@
-<!doctype html>
-<html lang="fr">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>al3ph_zero</title>
-        <link rel="stylesheet" href="style.css" />
-    </head>
-    <body>
-        <!-- ===================== Loader (animation ℵ₀) ===================== -->
-        <div id="loader">
-            <div id="stage">
-                <svg
-                    id="svg"
-                    viewBox="0 0 400 400"
-                    xmlns="http://www.w3.org/2000/svg"
-                ></svg>
+---
+layout: home
+nav_active: home
+title: ""
+---
+<header class="hero">
+    <h1>Thomas Mezino</h1>
+    <p class="handle">al3ph_zero</p>
+    <p class="intro">
+        Hey! I'm an engineering student passionate about computer science. On
+        this page, you'll find informations about my school projects, personal
+        projects, as well as contact information.
+    </p>
+</header>
+
+<p class="logos-label">Languages and tools</p>
+<div class="logos" aria-label="Technologies I use">
+    <div class="logos__track" aria-hidden="true">
+        <span class="logos__item" style="--src: url('images/logos/python.svg')"></span>
+        <span class="logos__item" style="--src: url('images/logos/c.svg')"></span>
+        <span class="logos__item" style="--src: url('images/logos/javascript.svg')"></span>
+        <span class="logos__item" style="--src: url('images/logos/typescript.svg')"></span>
+        <span class="logos__item" style="--src: url('images/logos/rust.svg')"></span>
+        <span class="logos__item" style="--src: url('images/logos/php.svg')"></span>
+        <span class="logos__item" style="--src: url('images/logos/html5.svg')"></span>
+        <span class="logos__item" style="--src: url('images/logos/css.svg')"></span>
+        <span class="logos__item" style="--src: url('images/logos/vue.svg')"></span>
+        <span class="logos__item" style="--src: url('images/logos/laravel.svg')"></span>
+        <span class="logos__item" style="--src: url('images/logos/bash.svg')"></span>
+        <span class="logos__item" style="--src: url('images/logos/docker.svg')"></span>
+        <span class="logos__item" style="--src: url('images/logos/vscode.svg')"></span>
+        <span class="logos__item" style="--src: url('images/logos/gitlab.svg')"></span>
+        <span class="logos__item" style="--src: url('images/logos/linux.svg')"></span>
+        <span class="logos__item" style="--src: url('images/logos/windows.svg')"></span>
+        <span class="logos__item" style="--src: url('images/logos/kali.svg')"></span>
+        <!-- duplicata pour la boucle infinie -->
+        <span class="logos__item" style="--src: url('images/logos/python.svg')"></span>
+        <span class="logos__item" style="--src: url('images/logos/c.svg')"></span>
+        <span class="logos__item" style="--src: url('images/logos/javascript.svg')"></span>
+        <span class="logos__item" style="--src: url('images/logos/typescript.svg')"></span>
+        <span class="logos__item" style="--src: url('images/logos/rust.svg')"></span>
+        <span class="logos__item" style="--src: url('images/logos/php.svg')"></span>
+        <span class="logos__item" style="--src: url('images/logos/html5.svg')"></span>
+        <span class="logos__item" style="--src: url('images/logos/css.svg')"></span>
+        <span class="logos__item" style="--src: url('images/logos/vue.svg')"></span>
+        <span class="logos__item" style="--src: url('images/logos/laravel.svg')"></span>
+        <span class="logos__item" style="--src: url('images/logos/bash.svg')"></span>
+        <span class="logos__item" style="--src: url('images/logos/docker.svg')"></span>
+        <span class="logos__item" style="--src: url('images/logos/vscode.svg')"></span>
+        <span class="logos__item" style="--src: url('images/logos/gitlab.svg')"></span>
+        <span class="logos__item" style="--src: url('images/logos/linux.svg')"></span>
+        <span class="logos__item" style="--src: url('images/logos/windows.svg')"></span>
+        <span class="logos__item" style="--src: url('images/logos/kali.svg')"></span>
+    </div>
+</div>
+
+<section id="projects">
+    <h2>Projects</h2>
+    <ul class="projects">
+        <li>
+            <a href="https://github.com/bobbysenior/uml2code-mirror">uml2code</a>
+            <p>
+                A multi-language code generator that turns PlantUML class
+                diagrams into object-oriented source code in C++, Java and
+                Python. It parses classes, interfaces, enumerations and the
+                usual relationships (inheritance, implementation, composition,
+                aggregation and association), and relies on the Abstract Factory
+                pattern to keep diagram parsing fully decoupled from
+                language-specific generation. An academic project carried out by
+                a team of three.
+            </p>
+            <img
+                src="https://raw.githubusercontent.com/bobbysenior/uml2code-mirror/main/uml_diagrams/core_diagram.png"
+                alt="uml2code core class diagram"
+            />
+        </li>
+        <li>
+            <a href="https://github.com/bobbysenior/ndi-ees-meci">Sésame</a>
+            <p>
+                An alternative authentication system that replaces the usual
+                alphanumeric password with a culinary one: instead of typing
+                characters, you build a recipe by dragging and dropping
+                ingredients, each one mapping to a character. The idea is to
+                rely on procedural memory rather than rote recall. Built with a
+                Laravel backend and vanilla JavaScript drag-and-drop during the
+                Nuit de l'Info hackathon.
+            </p>
+            <div class="shots">
+                <img src="images/sesame_index.webp" alt="Sésame home page" />
+                <img src="images/sesame_login.webp" alt="Sésame login page" />
             </div>
-        </div>
+        </li>
+        <li>
+            <a href="https://github.com/bobbysenior/quizzia-vibe">Quizia</a>
+            <p>
+                An AI-powered quiz application: describe a topic and a number of
+                questions, and the AI writes the whole quiz in seconds, ready to
+                share or keep private. Quizzes can also be built by hand, and a
+                public catalog offers search, filtering and gameplay tracking.
+                Built with Next.js, React, TypeScript and Tailwind CSS on top of
+                Supabase, with question generation powered by the Cerebras Cloud
+                SDK.
+            </p>
+            <img src="images/quizzia.webp" alt="Quizia landing page" />
+        </li>
+    </ul>
+</section>
 
-        <!-- ===================== Contenu ===================== -->
-        <main id="content">
-            <div class="wrap">
-                <nav class="nav">
-                    <a href="index.html" class="brand">&#8501;<sub>0</sub></a>
-                    <div class="nav-links">
-                        <a href="index.html" class="active">Home</a>
-                        <a href="index.html#projects">Projects</a>
-                        <a href="index.html#ctf">CTF</a>
-                        <a href="about.html">About</a>
-                        <a href="blog.html">Blog</a>
-                    </div>
-                </nav>
-                <header class="hero">
-                    <!-- <div class="mark">&#8501;<sub>0</sub></div> -->
-                    <h1>Thomas Mezino</h1>
-                    <p class="handle">al3ph_zero</p>
-                    <p class="intro">
-                        Hey! I'm an engineering student passionate about computer science. On this page, you'll find
-                        informations about my school projects, personal projects, as well as contact  information.
-                    </p>
-                </header>
-
-                <p class="logos-label">Languages and tools</p>
-                <div class="logos" aria-label="Technologies I use">
-                    <div class="logos__track" aria-hidden="true">
-                        <span class="logos__item" style="--src: url('images/logos/python.svg')"></span>
-                        <span class="logos__item" style="--src: url('images/logos/c.svg')"></span>
-                        <!-- <span class="logos__item" style="--src: url('images/logos/cpp.svg')"></span> -->
-                        <span class="logos__item" style="--src: url('images/logos/javascript.svg')"></span>
-                        <span class="logos__item" style="--src: url('images/logos/typescript.svg')"></span>
-                        <span class="logos__item" style="--src: url('images/logos/rust.svg')"></span>
-                        <span class="logos__item" style="--src: url('images/logos/php.svg')"></span>
-                        <span class="logos__item" style="--src: url('images/logos/html5.svg')"></span>
-                        <span class="logos__item" style="--src: url('images/logos/css.svg')"></span>
-                        <span class="logos__item" style="--src: url('images/logos/vue.svg')"></span>
-                        <span class="logos__item" style="--src: url('images/logos/laravel.svg')"></span>
-                        <span class="logos__item" style="--src: url('images/logos/bash.svg')"></span>
-                        <span class="logos__item" style="--src: url('images/logos/docker.svg')"></span>
-                        <span class="logos__item" style="--src: url('images/logos/vscode.svg')"></span>
-                        <span class="logos__item" style="--src: url('images/logos/gitlab.svg')"></span>
-                        <span class="logos__item" style="--src: url('images/logos/linux.svg')"></span>
-                        <span class="logos__item" style="--src: url('images/logos/windows.svg')"></span>
-                        <span class="logos__item" style="--src: url('images/logos/kali.svg')"></span>
-                        <!-- duplicata pour la boucle infinie -->
-                        <span class="logos__item" style="--src: url('images/logos/python.svg')"></span>
-                        <span class="logos__item" style="--src: url('images/logos/c.svg')"></span>
-                        <!-- <span class="logos__item" style="--src: url('images/logos/cpp.svg')"></span> -->
-                        <span class="logos__item" style="--src: url('images/logos/javascript.svg')"></span>
-                        <span class="logos__item" style="--src: url('images/logos/typescript.svg')"></span>
-                        <span class="logos__item" style="--src: url('images/logos/rust.svg')"></span>
-                        <span class="logos__item" style="--src: url('images/logos/php.svg')"></span>
-                        <span class="logos__item" style="--src: url('images/logos/html5.svg')"></span>
-                        <span class="logos__item" style="--src: url('images/logos/css.svg')"></span>
-                        <span class="logos__item" style="--src: url('images/logos/vue.svg')"></span>
-                        <span class="logos__item" style="--src: url('images/logos/laravel.svg')"></span>
-                        <span class="logos__item" style="--src: url('images/logos/bash.svg')"></span>
-                        <span class="logos__item" style="--src: url('images/logos/docker.svg')"></span>
-                        <span class="logos__item" style="--src: url('images/logos/vscode.svg')"></span>
-                        <span class="logos__item" style="--src: url('images/logos/gitlab.svg')"></span>
-                        <span class="logos__item" style="--src: url('images/logos/linux.svg')"></span>
-                        <span class="logos__item" style="--src: url('images/logos/windows.svg')"></span>
-                        <span class="logos__item" style="--src: url('images/logos/kali.svg')"></span>
-                    </div>
-                </div>
-
-                <section id="projects">
-                    <h2>Projects</h2>
-                    <ul class="projects">
-                        <li>
-                            <a href="https://github.com/bobbysenior/uml2code-mirror">uml2code</a>
-                            <p>
-                                A multi-language code generator that turns
-                                PlantUML class diagrams into object-oriented
-                                source code in C++, Java and Python. It parses
-                                classes, interfaces, enumerations and the usual
-                                relationships (inheritance, implementation,
-                                composition, aggregation and association), and
-                                relies on the Abstract Factory pattern to keep
-                                diagram parsing fully decoupled from
-                                language-specific generation. An academic
-                                project carried out by a team of three.
-                            </p>
-                            <img
-                                src="https://raw.githubusercontent.com/bobbysenior/uml2code-mirror/main/uml_diagrams/core_diagram.png"
-                                alt="uml2code core class diagram"
-                            />
-                        </li>
-                        <li>
-                            <a href="https://github.com/bobbysenior/ndi-ees-meci">Sésame</a>
-                            <p>
-                                An alternative authentication system that
-                                replaces the usual alphanumeric password with a
-                                culinary one: instead of typing characters, you
-                                build a recipe by dragging and dropping
-                                ingredients, each one mapping to a character.
-                                The idea is to rely on procedural memory rather
-                                than rote recall. Built with a Laravel backend
-                                and vanilla JavaScript drag-and-drop during the
-                                Nuit de l'Info hackathon.
-                            </p>
-                            <div class="shots">
-                                <img
-                                    src="images/sesame_index.webp"
-                                    alt="Sésame home page"
-                                />
-                                <img
-                                    src="images/sesame_login.webp"
-                                    alt="Sésame login page"
-                                />
-                            </div>
-                        </li>
-                        <li>
-                            <a href="https://github.com/bobbysenior/quizzia-vibe">Quizia</a>
-                            <p>
-                                An AI-powered quiz application: describe a topic
-                                and a number of questions, and the AI writes the
-                                whole quiz in seconds, ready to share or keep
-                                private. Quizzes can also be built by hand, and a
-                                public catalog offers search, filtering and
-                                gameplay tracking. Built with Next.js, React,
-                                TypeScript and Tailwind CSS on top of Supabase,
-                                with question generation powered by the Cerebras
-                                Cloud SDK.
-                            </p>
-                            <img
-                                src="images/quizzia.webp"
-                                alt="Quizia landing page"
-                            />
-                        </li>
-                    </ul>
-                </section>
-
-                <!-- TODO: remplace ces entrées par ton vrai palmarès. -->
-                <section id="ctf">
-                    <h2>CTF</h2>
-                    <ul class="ctf">
-                        <li>
-                            <div class="ctf__head">
-                                <span class="ctf__name">BSides CTF</span>
-                                <span class="ctf__rank">3rd / 19</span>
-                            </div>
-                            <p class="ctf__meta">2025 · Team 404_slip_not_found</p>
-                        </li>
-                        <li>
-                            <div class="ctf__head">
-                                <span class="ctf__name">OCOI CTF</span>
-                                <span class="ctf__rank">10th / 96</span>
-                            </div>
-                            <p class="ctf__meta">2025 · Team 404_sl33p_n0t_f0und</p>
-                        </li>
-                        <li>
-                            <div class="ctf__head">
-                                <span class="ctf__name">Hero CTF</span>
-                                <span class="ctf__rank">286th / 1052</span>
-                            </div>
-                            <p class="ctf__meta">2025 · Team ESIROI</p>
-                        </li>
-                    </ul>
-                </section>
-
-                <section class="contact">
-                    <h2>Contact</h2>
-                    <p>
-                        Professional mail —
-                        <a href="mailto:al3ph_0@proton.me">al3ph_0@proton.me</a>
-                    </p>
-                    <p>
-                        <a href="https://github.com/bobbysenior">Github</a>
-                    </p>
-                </section>
-
-                <footer>
-                    &copy; <span id="year"></span> Thomas MEZINO.
-                    <a href="legal-mentions.html">Legal mentions</a>
-                </footer>
+<section id="ctf">
+    <h2>CTF</h2>
+    <ul class="ctf">
+        <li>
+            <div class="ctf__head">
+                <span class="ctf__name">BSides CTF</span>
+                <span class="ctf__rank">3rd / 19</span>
             </div>
-        </main>
+            <p class="ctf__meta">2025 · Team 404_slip_not_found</p>
+        </li>
+        <li>
+            <div class="ctf__head">
+                <span class="ctf__name">OCOI CTF</span>
+                <span class="ctf__rank">10th / 96</span>
+            </div>
+            <p class="ctf__meta">2025 · Team 404_sl33p_n0t_f0und</p>
+        </li>
+        <li>
+            <div class="ctf__head">
+                <span class="ctf__name">Hero CTF</span>
+                <span class="ctf__rank">286th / 1052</span>
+            </div>
+            <p class="ctf__meta">2025 · Team ESIROI</p>
+        </li>
+    </ul>
+</section>
 
-        <script>
-            const ALEPH = "ℵ";
-            const ZERO = "₀";
-
-            const NS = "http://www.w3.org/2000/svg";
-            const svg = document.getElementById("svg");
-
-            function makeStrokedText(ch, size, x, y) {
-                const t = document.createElementNS(NS, "text");
-                t.setAttribute("x", x);
-                t.setAttribute("y", y);
-                t.setAttribute(
-                    "font-family",
-                    "'Times New Roman', 'STIX Two Math', serif",
-                );
-                t.setAttribute("font-size", size);
-                t.setAttribute("fill", "#fff");
-                t.setAttribute("stroke", "#fff");
-                t.setAttribute("stroke-width", "1.2");
-                t.setAttribute("stroke-linejoin", "round");
-                t.setAttribute("stroke-linecap", "round");
-                t.setAttribute("text-anchor", "middle");
-                t.textContent = ch;
-                return t;
-            }
-
-            const aleph = makeStrokedText(ALEPH, 230, 175, 250);
-            const zero = makeStrokedText(ZERO, 230, 285, 300);
-            svg.appendChild(aleph);
-            svg.appendChild(zero);
-
-            function setupDash(el) {
-                const box = el.getBBox();
-                const dash = (box.width + box.height) * 3;
-                el.style.strokeDasharray = dash;
-                el.style.strokeDashoffset = dash;
-                el.style.fillOpacity = 0;
-                return dash;
-            }
-
-            function animate(
-                el,
-                dash,
-                { drawTime, fillStart, fillTime, delay },
-                onEnd,
-            ) {
-                const start = performance.now() + delay;
-                function frame(now) {
-                    const t = now - start;
-                    if (t < 0) {
-                        requestAnimationFrame(frame);
-                        return;
-                    }
-                    const dp = Math.min(t / drawTime, 1);
-                    const e = dp < 0.5 ? 2 * dp * dp : -1 + (4 - 2 * dp) * dp; // easeInOut
-                    el.style.strokeDashoffset = dash * (1 - e);
-                    if (t > fillStart) {
-                        const fp = Math.min((t - fillStart) / fillTime, 1);
-                        el.style.fillOpacity = fp;
-                    }
-                    if (dp < 1 || t - fillStart < fillTime) {
-                        requestAnimationFrame(frame);
-                    } else if (onEnd) {
-                        onEnd();
-                    }
-                }
-                requestAnimationFrame(frame);
-            }
-
-            function reveal() {
-                const loader = document.getElementById("loader");
-                const content = document.getElementById("content");
-                loader.classList.add("done");
-                content.classList.add("visible");
-                setTimeout(() => loader.remove(), 900);
-            }
-
-            function run() {
-                const dA = setupDash(aleph);
-                const dZ = setupDash(zero);
-                animate(aleph, dA, {
-                    drawTime: 1100,
-                    fillStart: 700,
-                    fillTime: 700,
-                    delay: 100,
-                });
-                // le ₀ termine en dernier -> on déclenche la révélation à sa fin
-                animate(
-                    zero,
-                    dZ,
-                    {
-                        drawTime: 1100,
-                        fillStart: 700,
-                        fillTime: 700,
-                        delay: 175,
-                    },
-                    () => setTimeout(reveal, 250),
-                );
-            }
-
-            function skipLoader() {
-                const loader = document.getElementById("loader");
-                const content = document.getElementById("content");
-                content.style.transition = "none";
-                content.classList.add("visible");
-                if (loader) loader.remove();
-            }
-
-            document.getElementById("year").textContent =
-                new Date().getFullYear();
-
-            // L'animation ne se joue qu'une fois par session ; on l'ignore
-            // ensuite (navigation, retour à l'accueil).
-            if (sessionStorage.getItem("introPlayed")) {
-                skipLoader();
-            } else {
-                sessionStorage.setItem("introPlayed", "1");
-                if (document.fonts && document.fonts.ready) {
-                    document.fonts.ready.then(run);
-                } else {
-                    window.addEventListener("load", run);
-                }
-            }
-        </script>
-    </body>
-</html>
+<section class="contact">
+    <h2>Contact</h2>
+    <p>
+        Professional mail —
+        <a href="mailto:al3ph_0@proton.me">al3ph_0@proton.me</a>
+    </p>
+    <p>
+        <a href="https://github.com/bobbysenior">Github</a>
+    </p>
+</section>
