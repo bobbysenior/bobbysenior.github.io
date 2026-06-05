@@ -477,3 +477,133 @@ footer a:hover {
     font-size: 0.85rem;
     line-height: 1.5;
 }
+
+/* Bloc Rouge : conteneur pour positionner le bouton "copier" */
+.post div.highlighter-rouge {
+    position: relative;
+    margin: 1.5rem 0;
+}
+.post div.highlighter-rouge pre {
+    margin: 0;
+}
+.post .copy-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    padding: 0.25rem 0.6rem;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 0.75rem;
+    color: var(--fg);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.2s ease, background 0.2s ease;
+}
+.post .highlighter-rouge:hover .copy-btn,
+.post .copy-btn:focus-visible {
+    opacity: 1;
+}
+.post .copy-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+.post .copy-btn.copied {
+    color: #000;
+    background: var(--accent);
+    border-color: var(--accent);
+    opacity: 1;
+}
+
+/* ---------- Coloration syntaxique (Rouge, thème base16.dark) ---------- */
+.post .highlight,
+.post .highlight .w {
+    color: #d0d0d0;
+    background: none;
+}
+.post .highlight .err {
+    color: #151515;
+    background-color: #ac4142;
+}
+.post .highlight .c,
+.post .highlight .ch,
+.post .highlight .cd,
+.post .highlight .cm,
+.post .highlight .cpf,
+.post .highlight .c1,
+.post .highlight .cs {
+    color: #6c7a89;
+    font-style: italic;
+}
+.post .highlight .cp,
+.post .highlight .nt {
+    color: #f4bf75;
+}
+.post .highlight .o,
+.post .highlight .ow,
+.post .highlight .p,
+.post .highlight .pi {
+    color: #d0d0d0;
+}
+.post .highlight .gi {
+    color: #90a959;
+}
+.post .highlight .gd {
+    color: #ac4142;
+}
+.post .highlight .gh {
+    color: #6a9fb5;
+    font-weight: bold;
+}
+.post .highlight .k,
+.post .highlight .kn,
+.post .highlight .kp,
+.post .highlight .kr,
+.post .highlight .kv {
+    color: #aa759f;
+}
+.post .highlight .kc,
+.post .highlight .kt,
+.post .highlight .kd {
+    color: #d28445;
+}
+.post .highlight .s,
+.post .highlight .sb,
+.post .highlight .sc,
+.post .highlight .dl,
+.post .highlight .sd,
+.post .highlight .s2,
+.post .highlight .sh,
+.post .highlight .sx,
+.post .highlight .s1,
+.post .highlight .ss {
+    color: #90a959;
+}
+.post .highlight .sa {
+    color: #aa759f;
+}
+.post .highlight .sr {
+    color: #75b5aa;
+}
+.post .highlight .si,
+.post .highlight .se {
+    color: #8f5536;
+}
+.post .highlight .nn,
+.post .highlight .nc,
+.post .highlight .no {
+    color: #f4bf75;
+}
+.post .highlight .na {
+    color: #6a9fb5;
+}
+.post .highlight .m,
+.post .highlight .mb,
+.post .highlight .mf,
+.post .highlight .mh,
+.post .highlight .mi,
+.post .highlight .il,
+.post .highlight .mo,
+.post .highlight .mx {
+    color: #90a959;
+}
