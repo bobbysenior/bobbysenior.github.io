@@ -6,3 +6,30 @@
         <a href="{{ '/legal-mentions/' | relative_url }}">Legal mentions</a>
     {% endif %}
 </footer>
+
+<script>
+    (function () {
+        var btn = document.getElementById("theme-toggle");
+        if (!btn) return;
+        var root = document.documentElement;
+
+        function syncIcon() {
+            var light = root.getAttribute("data-theme") === "light";
+            // Icône = ce vers quoi on bascule
+            btn.textContent = light ? "☀" : "☾";
+        }
+        syncIcon();
+
+        btn.addEventListener("click", function () {
+            var light = root.getAttribute("data-theme") === "light";
+            if (light) {
+                root.removeAttribute("data-theme");
+                localStorage.setItem("theme", "dark");
+            } else {
+                root.setAttribute("data-theme", "light");
+                localStorage.setItem("theme", "light");
+            }
+            syncIcon();
+        });
+    })();
+</script>

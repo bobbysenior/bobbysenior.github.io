@@ -2,6 +2,19 @@
     --bg: #0a0a0a;
     --fg: #ffffff;
     --accent: #22d3ee; /* cyan */
+    /* Teinte des bordures/surfaces translucides : blanc en sombre */
+    --overlay-rgb: 255, 255, 255;
+    color-scheme: dark;
+}
+[data-theme="light"] {
+    --bg: #ffffff;
+    --fg: #0a0a0a;
+    --accent: #0e7490; /* cyan plus foncé, lisible sur blanc */
+    --overlay-rgb: 0, 0, 0;
+    color-scheme: light;
+}
+body {
+    transition: background 0.3s ease, color 0.3s ease;
 }
 * {
     margin: 0;
@@ -36,7 +49,7 @@ body {
 }
 ::selection {
     background: var(--accent);
-    color: #000;
+    color: var(--bg);
 }
 
 /* ---------- Écran de chargement (page d'accueil) ---------- */
@@ -88,7 +101,7 @@ body {
     gap: 1rem;
     padding: 1rem 0;
     margin-bottom: 3.5rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(var(--overlay-rgb), 0.1);
 }
 .nav .brand {
     font-size: 1.6rem;
@@ -281,7 +294,7 @@ ul.projects {
 ul.projects li {
     padding-bottom: 2.5rem;
     margin-bottom: 2.5rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    border-bottom: 1px solid rgba(var(--overlay-rgb), 0.15);
 }
 ul.projects li:last-child {
     padding-bottom: 0;
@@ -333,7 +346,7 @@ ul.ctf {
 ul.ctf li {
     padding-bottom: 1.25rem;
     margin-bottom: 1.25rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    border-bottom: 1px solid rgba(var(--overlay-rgb), 0.15);
 }
 ul.ctf li:last-child {
     padding-bottom: 0;
@@ -459,13 +472,13 @@ footer a:hover {
 .post code {
     font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
     font-size: 0.9em;
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(var(--overlay-rgb), 0.08);
     padding: 0.1rem 0.35rem;
     border-radius: 3px;
 }
 .post pre {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(var(--overlay-rgb), 0.05);
+    border: 1px solid rgba(var(--overlay-rgb), 0.15);
     border-radius: 4px;
     padding: 1rem 1.2rem;
     overflow-x: auto;
@@ -494,8 +507,8 @@ footer a:hover {
     font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
     font-size: 0.75rem;
     color: var(--fg);
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(var(--overlay-rgb), 0.08);
+    border: 1px solid rgba(var(--overlay-rgb), 0.2);
     border-radius: 3px;
     cursor: pointer;
     opacity: 0;
@@ -506,10 +519,10 @@ footer a:hover {
     opacity: 1;
 }
 .post .copy-btn:hover {
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(var(--overlay-rgb), 0.15);
 }
 .post .copy-btn.copied {
-    color: #000;
+    color: var(--bg);
     background: var(--accent);
     border-color: var(--accent);
     opacity: 1;
@@ -606,4 +619,101 @@ footer a:hover {
 .post .highlight .mo,
 .post .highlight .mx {
     color: #90a959;
+}
+
+/* ---------- Coloration syntaxique : variante claire ---------- */
+[data-theme="light"] .post .highlight,
+[data-theme="light"] .post .highlight .w {
+    color: #24292e;
+}
+[data-theme="light"] .post .highlight .c,
+[data-theme="light"] .post .highlight .ch,
+[data-theme="light"] .post .highlight .cd,
+[data-theme="light"] .post .highlight .cm,
+[data-theme="light"] .post .highlight .cpf,
+[data-theme="light"] .post .highlight .c1,
+[data-theme="light"] .post .highlight .cs {
+    color: #6a737d;
+}
+[data-theme="light"] .post .highlight .cp,
+[data-theme="light"] .post .highlight .nt {
+    color: #22863a;
+}
+[data-theme="light"] .post .highlight .o,
+[data-theme="light"] .post .highlight .ow,
+[data-theme="light"] .post .highlight .p,
+[data-theme="light"] .post .highlight .pi {
+    color: #24292e;
+}
+[data-theme="light"] .post .highlight .gi {
+    color: #22863a;
+}
+[data-theme="light"] .post .highlight .gd {
+    color: #b31d28;
+}
+[data-theme="light"] .post .highlight .gh {
+    color: #005cc5;
+    font-weight: bold;
+}
+[data-theme="light"] .post .highlight .k,
+[data-theme="light"] .post .highlight .kn,
+[data-theme="light"] .post .highlight .kp,
+[data-theme="light"] .post .highlight .kr,
+[data-theme="light"] .post .highlight .kv,
+[data-theme="light"] .post .highlight .kc,
+[data-theme="light"] .post .highlight .kt,
+[data-theme="light"] .post .highlight .kd {
+    color: #d73a49;
+}
+[data-theme="light"] .post .highlight .s,
+[data-theme="light"] .post .highlight .sb,
+[data-theme="light"] .post .highlight .sc,
+[data-theme="light"] .post .highlight .dl,
+[data-theme="light"] .post .highlight .sd,
+[data-theme="light"] .post .highlight .s2,
+[data-theme="light"] .post .highlight .sh,
+[data-theme="light"] .post .highlight .sx,
+[data-theme="light"] .post .highlight .s1,
+[data-theme="light"] .post .highlight .ss {
+    color: #032f62;
+}
+[data-theme="light"] .post .highlight .sa {
+    color: #d73a49;
+}
+[data-theme="light"] .post .highlight .sr,
+[data-theme="light"] .post .highlight .si,
+[data-theme="light"] .post .highlight .se {
+    color: #e36209;
+}
+[data-theme="light"] .post .highlight .nn,
+[data-theme="light"] .post .highlight .nc,
+[data-theme="light"] .post .highlight .no,
+[data-theme="light"] .post .highlight .na {
+    color: #6f42c1;
+}
+[data-theme="light"] .post .highlight .m,
+[data-theme="light"] .post .highlight .mb,
+[data-theme="light"] .post .highlight .mf,
+[data-theme="light"] .post .highlight .mh,
+[data-theme="light"] .post .highlight .mi,
+[data-theme="light"] .post .highlight .il,
+[data-theme="light"] .post .highlight .mo,
+[data-theme="light"] .post .highlight .mx {
+    color: #005cc5;
+}
+
+/* ---------- Bouton bascule de thème ---------- */
+.theme-toggle {
+    background: none;
+    border: none;
+    color: var(--fg);
+    cursor: pointer;
+    font-size: 1.1rem;
+    line-height: 1;
+    padding: 0;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+.theme-toggle:hover {
+    color: var(--accent);
+    transform: scale(1.15);
 }
