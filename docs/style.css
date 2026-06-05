@@ -13,6 +13,20 @@ body {
     width: 100%;
     min-height: 100%;
 }
+html {
+    scroll-behavior: smooth;
+}
+/* Décalage pour que les ancres ne passent pas sous la nav sticky */
+:target,
+section[id] {
+    scroll-margin-top: 6rem;
+}
+/* Respect des préférences d'accessibilité */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
 body {
     background: var(--bg);
     color: var(--fg);
