@@ -13,6 +13,8 @@ permalink: /blog/:title/
 
 kramdown:
   input: GFM
+  # Laisser les maths brutes : MathJax s'en charge côté client ($...$ et $$...$$)
+  math_engine: null
 
 # Files Jekyll should not copy into the built site
 exclude:

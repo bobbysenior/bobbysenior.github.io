@@ -4,4 +4,23 @@
     {% if page.noindex %}<meta name="robots" content="noindex" />{% endif %}
     <title>al3ph_zero{% if page.title and page.title != "" %} — {{ page.title }}{% endif %}</title>
     <link rel="stylesheet" href="{{ '/style.css' | relative_url }}" />
+    {% if page.layout == "post" %}
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [["$", "$"], ["\\(", "\\)"]],
+                displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+            },
+            options: {
+                // Ne pas interpréter les $ à l'intérieur des blocs de code
+                skipHtmlTags: ["script", "noscript", "style", "textarea", "pre", "code"],
+            },
+        };
+    </script>
+    <script
+        id="MathJax-script"
+        async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+    {% endif %}
 </head>
