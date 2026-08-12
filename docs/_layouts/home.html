@@ -3,12 +3,13 @@
     {% include head.html %}
     <body>
         <!-- ===================== Loader (animation ℵ₀) ===================== -->
-        <div id="loader">
+        <div id="loader" aria-hidden="true">
             <div id="stage">
                 <svg
                     id="svg"
                     viewBox="0 0 400 400"
                     xmlns="http://www.w3.org/2000/svg"
+                    focusable="false"
                 ></svg>
             </div>
         </div>
@@ -23,6 +24,17 @@
         </main>
 
         <script>
+            (function () {
+            const root = document.documentElement;
+            const loaderEl = document.getElementById("loader");
+
+            // Pas de .js-intro (JS partiel, ou prefers-reduced-motion) :
+            // le CSS affiche déjà le contenu, on retire simplement le loader.
+            if (!root.classList.contains("js-intro")) {
+                if (loaderEl) loaderEl.remove();
+                return;
+            }
+
             const ALEPH = "ℵ";
             const ZERO = "₀";
 
@@ -38,8 +50,10 @@
                     "'Times New Roman', 'STIX Two Math', serif",
                 );
                 t.setAttribute("font-size", size);
-                t.setAttribute("fill", "#fff");
-                t.setAttribute("stroke", "#fff");
+                // Via style : les variables CSS ne sont pas fiables dans les
+                // attributs de présentation SVG.
+                t.style.fill = "var(--fg)";
+                t.style.stroke = "var(--fg)";
                 t.setAttribute("stroke-width", "1.2");
                 t.setAttribute("stroke-linejoin", "round");
                 t.setAttribute("stroke-linecap", "round");
@@ -92,14 +106,23 @@
             }
 
             function reveal() {
-                const loader = document.getElementById("loader");
                 const content = document.getElementById("content");
-                loader.classList.add("done");
+                loaderEl.classList.add("done");
                 content.classList.add("visible");
-                setTimeout(() => loader.remove(), 900);
+                setTimeout(() => {
+                    loaderEl.remove();
+                    root.classList.remove("js-intro");
+                }, 900);
             }
 
             function run() {
+                // Le filet de sécurité du head a pu retirer .js-intro entre-temps
+                // (polices très lentes) : le loader est alors masqué et getBBox()
+                // échoue. Le contenu étant déjà visible, on se contente de sortir.
+                if (!root.classList.contains("js-intro")) {
+                    skipLoader();
+                    return;
+                }
                 const dA = setupDash(aleph);
                 const dZ = setupDash(zero);
                 animate(aleph, dA, {
@@ -123,11 +146,11 @@
             }
 
             function skipLoader() {
-                const loader = document.getElementById("loader");
                 const content = document.getElementById("content");
                 content.style.transition = "none";
                 content.classList.add("visible");
-                if (loader) loader.remove();
+                loaderEl.remove();
+                root.classList.remove("js-intro");
             }
 
             // L'animation ne se joue qu'une fois par session ; on l'ignore
@@ -142,6 +165,7 @@
                     window.addEventListener("load", run);
                 }
             }
+            })();
         </script>
     </body>
 </html>

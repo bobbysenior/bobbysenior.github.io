@@ -51,18 +51,30 @@ body {
     background: var(--accent);
     color: var(--bg);
 }
+/* Repère de focus au clavier, sur tout le site */
+:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+}
 
 /* ---------- Écran de chargement (page d'accueil) ---------- */
+/* Par défaut — sans JS ou en mouvement réduit — le loader n'existe pas et le
+   contenu est visible. La classe .js-intro, posée par le script inline du
+   head, active l'animation d'intro. */
 #loader {
+    display: none;
     position: fixed;
     inset: 0;
-    background: #000;
-    display: flex;
+    background: var(--bg);
     align-items: center;
     justify-content: center;
     overflow: hidden;
     z-index: 100;
     transition: opacity 0.8s ease;
+}
+.js-intro #loader {
+    display: flex;
 }
 #loader.done {
     opacity: 0;
@@ -75,10 +87,13 @@ body {
 
 /* ---------- Contenu ---------- */
 #content {
+    opacity: 1;
+}
+.js-intro #content {
     opacity: 0;
     transition: opacity 1s ease 0.3s;
 }
-#content.visible {
+.js-intro #content.visible {
     opacity: 1;
 }
 
@@ -301,15 +316,27 @@ ul.projects li:last-child {
     margin-bottom: 0;
     border-bottom: none;
 }
-ul.projects a {
+ul.projects li > a,
+ul.projects .project__name {
+    display: inline-block;
     color: var(--fg);
     text-decoration: none;
     font-size: 1.3rem;
     border-bottom: 1px solid transparent;
     transition: border-color 0.2s ease, color 0.2s ease;
 }
-ul.projects a:hover {
+ul.projects li > a:hover {
     color: var(--accent);
+    border-color: var(--accent);
+}
+/* Liens en ligne dans une description : taille du corps de texte */
+ul.projects p a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(var(--overlay-rgb), 0.35);
+    transition: border-color 0.2s ease;
+}
+ul.projects p a:hover {
     border-color: var(--accent);
 }
 ul.projects p {
@@ -711,9 +738,24 @@ footer a:hover {
     font-size: 1.1rem;
     line-height: 1;
     padding: 0;
+    /* Cible tactile de 44px (WCAG 2.2 §2.5.8 exige 24px au minimum) ;
+       la marge négative évite d'agrandir la hauteur de la nav. */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+    margin: -0.6rem 0;
     transition: color 0.2s ease, transform 0.2s ease;
 }
 .theme-toggle:hover {
     color: var(--accent);
     transform: scale(1.15);
+}
+@media (prefers-reduced-motion: reduce) {
+    .theme-toggle,
+    .theme-toggle:hover {
+        transform: none;
+        transition: color 0.2s ease;
+    }
 }
