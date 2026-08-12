@@ -58,6 +58,35 @@ title: ""
     <h2>Projects</h2>
     <ul class="projects">
         <li>
+            <span class="project__name"
+                >SAINE / USB-SAS — secure USB clean station (Kodetis,
+                internship)</span
+            >
+            <p>
+                SAINE is a hardened fork of the CEA's
+                <a href="https://github.com/cea-sec/usbsas">usbsas</a>
+                framework: a standalone kiosk that copies files from an
+                untrusted USB device to a trusted destination, so no workstation
+                ever touches the device. The design is microkernel-style, every
+                USB, SCSI and filesystem parser runs as its own user-space
+                process under a dedicated seccomp and landlock policy, and the
+                whole pipeline resets between transfers. On top of the upstream
+                project I added an encrypted upload destination over VPN,
+                antivirus deep scanning, a QR-code transfer report and recipient
+                selection in the GUI. I also built the surrounding platform:
+                reproducible NixOS kiosk images for Raspberry Pi 5 (aarch64) and
+                Zimaboard 2 (x86_64), full Nix cross-compilation, a signed update
+                server, a Dagger CI/CD pipeline, and system hardening validated
+                with Lynis. Rust, Nix, protobuf, ClamAV.
+            </p>
+            <img
+                src="images/saine.svg"
+                width="820"
+                height="372"
+                alt="SAINE transfer pipeline: insertion, isolation, analysis, release"
+            />
+        </li>
+        <li>
             <a href="https://github.com/bobbysenior/uml2code-mirror">uml2code</a>
             <p>
                 A multi-language code generator that turns PlantUML class

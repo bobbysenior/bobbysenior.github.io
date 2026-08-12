@@ -301,15 +301,27 @@ ul.projects li:last-child {
     margin-bottom: 0;
     border-bottom: none;
 }
-ul.projects a {
+ul.projects li > a,
+ul.projects .project__name {
+    display: inline-block;
     color: var(--fg);
     text-decoration: none;
     font-size: 1.3rem;
     border-bottom: 1px solid transparent;
     transition: border-color 0.2s ease, color 0.2s ease;
 }
-ul.projects a:hover {
+ul.projects li > a:hover {
     color: var(--accent);
+    border-color: var(--accent);
+}
+/* Liens en ligne dans une description : taille du corps de texte */
+ul.projects p a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(var(--overlay-rgb), 0.35);
+    transition: border-color 0.2s ease;
+}
+ul.projects p a:hover {
     border-color: var(--accent);
 }
 ul.projects p {
