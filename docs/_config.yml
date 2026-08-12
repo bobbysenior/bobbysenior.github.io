@@ -1,7 +1,7 @@
 title: al3ph_zero
 description: Portfolio of Thomas Mezino (al3ph_zero)
 
-# GitHub Pages project site is served under /portfolio/
+# Served at the domain root (user site), hence an empty baseurl
 url: "https://bobbysenior.github.io"
 baseurl: ""
 

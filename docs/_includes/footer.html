@@ -15,8 +15,11 @@
 
         function syncIcon() {
             var light = root.getAttribute("data-theme") === "light";
-            // Icône = ce vers quoi on bascule
+            // Icône et étiquette = ce vers quoi on bascule
             btn.textContent = light ? "☀" : "☾";
+            var label = light ? "Passer au thème sombre" : "Passer au thème clair";
+            btn.setAttribute("aria-label", label);
+            btn.setAttribute("title", label);
         }
         syncIcon();
 
