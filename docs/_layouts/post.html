@@ -4,10 +4,13 @@ layout: default
 <article class="post">
     <header class="post-header">
         <p class="back">
-            <a href="{{ '/blog/' | relative_url }}">&larr; Back to blog</a>
+            <a href="{{ '/blog/' | relative_url }}" data-i18n="back.blog">&larr; Back to blog</a>
         </p>
-        <h1>{{ page.title }}</h1>
-        <p class="post-date">{{ page.date | date: "%B %-d, %Y" }}</p>
+        <h1>
+            <span lang="en" data-language-content="en">{{ page.title_en | default: page.title }}</span>
+            <span lang="fr" data-language-content="fr">{{ page.title_fr | default: page.title }}</span>
+        </h1>
+        <time class="post-date" datetime="{{ page.date | date_to_xmlschema }}" data-localized-date>{{ page.date | date: "%B %-d, %Y" }}</time>
     </header>
 
     {{ content }}
@@ -21,20 +24,34 @@ layout: default
         var btn = document.createElement("button");
         btn.type = "button";
         btn.className = "copy-btn";
-        btn.textContent = "Copy";
-        btn.setAttribute("aria-label", "Copy code to clipboard");
+        function copyLabel(key) {
+            var french = document.documentElement.lang === "fr";
+            if (key === "copied") return french ? "Copié !" : "Copied!";
+            return french ? "Copier" : "Copy";
+        }
+
+        btn.textContent = copyLabel("copy");
+        btn.setAttribute("aria-label", document.documentElement.lang === "fr" ? "Copier le code dans le presse-papiers" : "Copy code to clipboard");
 
         btn.addEventListener("click", function () {
             navigator.clipboard.writeText(code.innerText).then(function () {
-                btn.textContent = "Copied!";
+                btn.textContent = copyLabel("copied");
                 btn.classList.add("copied");
                 setTimeout(function () {
-                    btn.textContent = "Copy";
+                    btn.textContent = copyLabel("copy");
                     btn.classList.remove("copied");
                 }, 1500);
             });
         });
 
         block.appendChild(btn);
+    });
+
+    document.addEventListener("languagechange", function () {
+        document.querySelectorAll(".copy-btn:not(.copied)").forEach(function (btn) {
+            var french = document.documentElement.lang === "fr";
+            btn.textContent = french ? "Copier" : "Copy";
+            btn.setAttribute("aria-label", french ? "Copier le code dans le presse-papiers" : "Copy code to clipboard");
+        });
     });
 </script>

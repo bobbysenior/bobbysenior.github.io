@@ -8,18 +8,24 @@ permalink: /blog/
 <ul class="projects">
     {% for post in site.posts %}
     <li>
-        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-        <p class="post-date">{{ post.date | date: "%B %-d, %Y" }}</p>
+        <a href="{{ post.url | relative_url }}">
+            <span lang="en" data-language-content="en">{{ post.title_en | default: post.title }}</span>
+            <span lang="fr" data-language-content="fr">{{ post.title_fr | default: post.title }}</span>
+        </a>
+        <time class="post-date" datetime="{{ post.date | date_to_xmlschema }}" data-localized-date>{{ post.date | date: "%B %-d, %Y" }}</time>
         {% if post.description %}
-        <p>{{ post.description }}</p>
+        <p>
+            <span lang="en" data-language-content="en">{{ post.description_en | default: post.description }}</span>
+            <span lang="fr" data-language-content="fr">{{ post.description_fr | default: post.description }}</span>
+        </p>
         {% endif %}
     </li>
     {% endfor %}
 </ul>
 {% else %}
 <section>
-    <h2>Coming soon</h2>
-    <p>
+    <h2 data-i18n="blog.empty.title">Coming soon</h2>
+    <p data-i18n="blog.empty.body">
         Nothing here yet. I plan to write about my projects, things I learn, and
         a few thoughts along the way. Check back later.
     </p>

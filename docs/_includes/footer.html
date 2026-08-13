@@ -1,9 +1,9 @@
 <footer>
     &copy; {{ site.time | date: "%Y" }} Thomas MEZINO.
     {% if page.nav_active == "legal" %}
-        <a href="{{ '/' | relative_url }}">Home</a>
+        <a href="{{ '/' | relative_url }}" data-i18n="nav.home">Home</a>
     {% else %}
-        <a href="{{ '/legal-mentions/' | relative_url }}">Legal mentions</a>
+        <a href="{{ '/legal-mentions/' | relative_url }}" data-i18n="footer.legal">Legal mentions</a>
     {% endif %}
 </footer>
 
@@ -17,7 +17,10 @@
             var light = root.getAttribute("data-theme") === "light";
             // Icône et étiquette = ce vers quoi on bascule
             btn.textContent = light ? "☀" : "☾";
-            var label = light ? "Passer au thème sombre" : "Passer au thème clair";
+            var french = root.lang === "fr";
+            var label = light
+                ? (french ? "Passer au thème sombre" : "Switch to dark theme")
+                : (french ? "Passer au thème clair" : "Switch to light theme");
             btn.setAttribute("aria-label", label);
             btn.setAttribute("title", label);
         }
@@ -34,5 +37,7 @@
             }
             syncIcon();
         });
+
+        document.addEventListener("languagechange", syncIcon);
     })();
 </script>

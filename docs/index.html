@@ -6,15 +6,15 @@ title: ""
 <header class="hero">
     <h1>Thomas Mezino</h1>
     <p class="handle">al3ph_zero</p>
-    <p class="intro">
+    <p class="intro" data-i18n="home.intro">
         Hey! I'm an engineering student passionate about computer science. On
         this page, you'll find informations about my school projects, personal
         projects, as well as contact information. 
     </p>
 </header>
 
-<p class="logos-label">Languages and tools</p>
-<div class="logos" aria-label="Technologies I use">
+<p class="logos-label" data-i18n="home.tools">Languages and tools</p>
+<div class="logos" aria-label="Technologies I use" data-i18n-aria-label="home.tools.label">
     <div class="logos__track" aria-hidden="true">
         <span class="logos__item" style="--src: url('images/logos/python.svg')"></span>
         <span class="logos__item" style="--src: url('images/logos/c.svg')"></span>
@@ -55,14 +55,14 @@ title: ""
 </div>
 
 <section id="projects">
-    <h2>Projects</h2>
+    <h2 data-i18n="home.projects">Projects</h2>
     <ul class="projects">
         <li>
-            <span class="project__name"
+            <span class="project__name" data-i18n="home.saine.name"
                 >SAINE / USB-SAS — secure USB clean station (Kodetis,
                 internship)</span
             >
-            <p>
+            <p data-i18n="home.saine.body">
                 SAINE is a hardened fork of the CEA's
                 <a href="https://github.com/cea-sec/usbsas">usbsas</a>
                 framework: a standalone kiosk that copies files from an
@@ -86,11 +86,12 @@ title: ""
                 loading="lazy"
                 decoding="async"
                 alt="SAINE transfer pipeline: insertion, isolation, analysis, release"
+                data-i18n-alt="home.saine.alt"
             />
         </li>
         <li>
             <a href="https://github.com/bobbysenior/uml2code-mirror">uml2code</a>
-            <p>
+            <p data-i18n="home.uml.body">
                 A multi-language code generator that turns PlantUML class
                 diagrams into object-oriented source code in C++, Java and
                 Python. It parses classes, interfaces, enumerations and the
@@ -107,11 +108,12 @@ title: ""
                 loading="lazy"
                 decoding="async"
                 alt="uml2code core class diagram"
+                data-i18n-alt="home.uml.alt"
             />
         </li>
         <li>
             <a href="https://github.com/bobbysenior/ndi-ees-meci">Sésame</a>
-            <p>
+            <p data-i18n="home.sesame.body">
                 An alternative authentication system that replaces the usual
                 alphanumeric password with a culinary one: instead of typing
                 characters, you build a recipe by dragging and dropping
@@ -128,6 +130,7 @@ title: ""
                     loading="lazy"
                     decoding="async"
                     alt="Sésame home page"
+                    data-i18n-alt="home.sesame.home.alt"
                 />
                 <img
                     src="images/sesame_login.webp"
@@ -136,12 +139,13 @@ title: ""
                     loading="lazy"
                     decoding="async"
                     alt="Sésame login page"
+                    data-i18n-alt="home.sesame.login.alt"
                 />
             </div>
         </li>
         <li>
             <a href="https://github.com/bobbysenior/quizzia-vibe">Quizia</a>
-            <p>
+            <p data-i18n="home.quizia.body">
                 An AI-powered quiz application: describe a topic and a number of
                 questions, and the AI writes the whole quiz in seconds, ready to
                 share or keep private. Quizzes can also be built by hand, and a
@@ -157,6 +161,7 @@ title: ""
                 loading="lazy"
                 decoding="async"
                 alt="Quizia landing page"
+                data-i18n-alt="home.quizia.alt"
             />
         </li>
     </ul>
@@ -168,23 +173,23 @@ title: ""
         <li>
             <div class="ctf__head">
                 <span class="ctf__name">BSides CTF</span>
-                <span class="ctf__rank">3rd / 19</span>
+                <span class="ctf__rank" data-i18n="home.ctf.rank3">3rd / 19</span>
             </div>
-            <p class="ctf__meta">2025 · Team 404_slip_not_found</p>
+            <p class="ctf__meta">2025 · <span data-i18n="home.ctf.team">Team</span> 404_slip_not_found</p>
         </li>
         <li>
             <div class="ctf__head">
                 <span class="ctf__name">OCOI CTF</span>
-                <span class="ctf__rank">10th / 96</span>
+                <span class="ctf__rank" data-i18n="home.ctf.rank10">10th / 96</span>
             </div>
-            <p class="ctf__meta">2025 · Team 404_sl33p_n0t_f0und</p>
+            <p class="ctf__meta">2025 · <span data-i18n="home.ctf.team">Team</span> 404_sl33p_n0t_f0und</p>
         </li>
         <li>
             <div class="ctf__head">
                 <span class="ctf__name">Hero CTF</span>
-                <span class="ctf__rank">286th / 1052</span>
+                <span class="ctf__rank" data-i18n="home.ctf.rank286">286th / 1052</span>
             </div>
-            <p class="ctf__meta">2025 · Team ESIROI</p>
+            <p class="ctf__meta">2025 · <span data-i18n="home.ctf.team">Team</span> ESIROI</p>
         </li>
     </ul>
 </section>
@@ -192,7 +197,7 @@ title: ""
 <section class="contact">
     <h2>Contact</h2>
     <p>
-        Professional mail —
+        <span data-i18n="home.contact.mail">Professional email —</span>
         <a href="mailto:al3ph_0@proton.me">al3ph_0@proton.me</a>
     </p>
     <p>

@@ -1,11 +1,16 @@
 <nav class="nav">
     <a href="{{ '/' | relative_url }}" class="brand">&#8501;<sub>0</sub></a>
     <div class="nav-links">
-        <a href="{{ '/' | relative_url }}"{% if page.nav_active == "home" %} class="active"{% endif %}>Home</a>
-        <a href="{{ '/' | relative_url }}#projects">Projects</a>
+        <a href="{{ '/' | relative_url }}"{% if page.nav_active == "home" %} class="active"{% endif %} data-i18n="nav.home">Home</a>
+        <a href="{{ '/' | relative_url }}#projects" data-i18n="nav.projects">Projects</a>
         <a href="{{ '/' | relative_url }}#ctf">CTF</a>
-        <a href="{{ '/about/' | relative_url }}"{% if page.nav_active == "about" %} class="active"{% endif %}>About</a>
+        <a href="{{ '/about/' | relative_url }}"{% if page.nav_active == "about" %} class="active"{% endif %} data-i18n="nav.about">About</a>
         <a href="{{ '/blog/' | relative_url }}"{% if page.nav_active == "blog" %} class="active"{% endif %}>Blog</a>
-        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Basculer le thème clair/sombre" title="Basculer le thème">☾</button>
+        <div class="language-switcher" role="group" aria-label="Language" data-i18n-aria-label="language.label">
+            <button type="button" data-language-option="fr" lang="fr" aria-pressed="false">FR</button>
+            <span aria-hidden="true">/</span>
+            <button type="button" data-language-option="en" lang="en" aria-pressed="false">EN</button>
+        </div>
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to light theme" title="Switch to light theme">☾</button>
     </div>
 </nav>

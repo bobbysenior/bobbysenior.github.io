@@ -3,6 +3,34 @@
     <script>
         // Appliquer le thème avant le rendu pour éviter tout flash
         (function () {
+            // Choisir la langue avant le premier rendu. Un choix explicite
+            // prime sur les préférences du navigateur.
+            try {
+                var savedLanguage = localStorage.getItem("language");
+                var browserLanguages = navigator.languages && navigator.languages.length
+                    ? navigator.languages
+                    : [navigator.language || "en"];
+                var language = savedLanguage === "fr" || savedLanguage === "en"
+                    ? savedLanguage
+                    : "en";
+                if (savedLanguage !== "fr" && savedLanguage !== "en") {
+                    for (var i = 0; i < browserLanguages.length; i += 1) {
+                        var candidate = String(browserLanguages[i]).toLowerCase().split("-")[0];
+                        if (candidate === "fr" || candidate === "en") {
+                            language = candidate;
+                            break;
+                        }
+                    }
+                }
+                document.documentElement.lang = language;
+                document.documentElement.setAttribute("data-language", language);
+                document.documentElement.classList.add("js-i18n");
+                window.__preferredLanguage = language;
+            } catch (e) {
+                document.documentElement.lang = "en";
+                document.documentElement.setAttribute("data-language", "en");
+            }
+
             try {
                 var saved = localStorage.getItem("theme");
                 var theme =
@@ -30,6 +58,9 @@
             setTimeout(function () {
                 document.documentElement.classList.remove("js-intro");
             }, 4000);
+            setTimeout(function () {
+                document.documentElement.classList.remove("js-i18n");
+            }, 1500);
         })();
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -68,6 +99,7 @@
     <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)" />
 
     <link rel="stylesheet" href="{{ '/style.css' | relative_url }}" />
+    <script defer src="{{ '/assets/js/i18n.js' | relative_url }}"></script>
     {% if page.layout == "post" %}
     <script>
         window.MathJax = {

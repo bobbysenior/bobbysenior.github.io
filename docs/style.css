@@ -29,6 +29,16 @@ body {
 html {
     scroll-behavior: smooth;
 }
+.js-i18n body {
+    visibility: hidden;
+}
+[data-language-content] {
+    display: none;
+}
+html[data-language="en"] [data-language-content="en"],
+html[data-language="fr"] [data-language-content="fr"] {
+    display: revert;
+}
 /* Décalage pour que les ancres ne passent pas sous la nav sticky */
 :target,
 section[id] {
@@ -127,6 +137,7 @@ body {
 .nav-links {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     gap: 1.5rem;
 }
 .nav-links a {
@@ -140,6 +151,33 @@ body {
 }
 .nav-links a:hover,
 .nav-links a.active {
+    color: var(--accent);
+    border-color: var(--accent);
+}
+.language-switcher {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: rgba(var(--overlay-rgb), 0.45);
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+}
+.language-switcher button {
+    min-width: 2rem;
+    min-height: 2.75rem;
+    margin-block: -0.6rem;
+    padding: 0;
+    color: var(--fg);
+    background: none;
+    border: 0;
+    border-bottom: 1px solid transparent;
+    font: inherit;
+    letter-spacing: inherit;
+    cursor: pointer;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+.language-switcher button:hover,
+.language-switcher button[aria-pressed="true"] {
     color: var(--accent);
     border-color: var(--accent);
 }
@@ -446,13 +484,15 @@ footer a:hover {
 }
 
 /* Contenu rendu depuis le Markdown */
-.post > h2 {
+.post > h2,
+.post > [data-language-content] > h2 {
     font-size: 1.5rem;
     font-weight: normal;
     color: var(--fg);
     margin: 2.5rem 0 1rem;
 }
-.post > h3 {
+.post > h3,
+.post > [data-language-content] > h3 {
     font-size: 1.2rem;
     font-weight: normal;
     color: var(--accent);
@@ -751,6 +791,25 @@ footer a:hover {
 .theme-toggle:hover {
     color: var(--accent);
     transform: scale(1.15);
+}
+
+@media (max-width: 700px) {
+    .wrap {
+        padding-top: 1.5rem;
+    }
+    .nav {
+        align-items: flex-start;
+        margin-bottom: 2.5rem;
+    }
+    .nav-links {
+        justify-content: flex-end;
+        gap: 0.8rem 1rem;
+        max-width: calc(100% - 3rem);
+    }
+    .nav-links a {
+        font-size: 0.82rem;
+        letter-spacing: 0.12em;
+    }
 }
 @media (prefers-reduced-motion: reduce) {
     .theme-toggle,
