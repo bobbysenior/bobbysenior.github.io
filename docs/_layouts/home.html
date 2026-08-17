@@ -2,6 +2,8 @@
 <html lang="en" data-page="home">
     {% include head.html %}
     <body>
+        <a class="skip-link" href="#main-content" data-i18n="skip.content">Skip to content</a>
+
         <!-- ===================== Loader (animation ℵ₀) ===================== -->
         <div id="loader" aria-hidden="true">
             <div id="stage">
@@ -16,7 +18,7 @@
 
         <!-- ===================== Contenu ===================== -->
         <main id="content">
-            <div class="wrap">
+            <div class="wrap" id="main-content" tabindex="-1">
                 {% include nav.html %}
                 {{ content }}
                 {% include footer.html %}
@@ -34,6 +36,17 @@
                 if (loaderEl) loaderEl.remove();
                 return;
             }
+
+            // Le contenu n'est qu'à opacity:0 sous le loader : sans `inert`, on
+            // peut y tabuler et donner le focus à des liens invisibles.
+            const contentEl = document.getElementById("content");
+            function unlockContent() {
+                if (contentEl) contentEl.removeAttribute("inert");
+            }
+            if (contentEl) contentEl.setAttribute("inert", "");
+            // Aligné sur le filet de sécurité du head : le contenu ne doit
+            // jamais rester inerte si l'animation n'aboutit pas.
+            setTimeout(unlockContent, 2000);
 
             const ALEPH = "ℵ";
             const ZERO = "₀";
@@ -109,10 +122,11 @@
                 const content = document.getElementById("content");
                 loaderEl.classList.add("done");
                 content.classList.add("visible");
+                unlockContent();
                 setTimeout(() => {
                     loaderEl.remove();
                     root.classList.remove("js-intro");
-                }, 900);
+                }, 450);
             }
 
             function run() {
@@ -126,22 +140,22 @@
                 const dA = setupDash(aleph);
                 const dZ = setupDash(zero);
                 animate(aleph, dA, {
-                    drawTime: 1100,
-                    fillStart: 700,
-                    fillTime: 700,
-                    delay: 100,
+                    drawTime: 550,
+                    fillStart: 350,
+                    fillTime: 350,
+                    delay: 50,
                 });
                 // le ₀ termine en dernier -> on déclenche la révélation à sa fin
                 animate(
                     zero,
                     dZ,
                     {
-                        drawTime: 1100,
-                        fillStart: 700,
-                        fillTime: 700,
-                        delay: 175,
+                        drawTime: 550,
+                        fillStart: 350,
+                        fillTime: 350,
+                        delay: 88,
                     },
-                    () => setTimeout(reveal, 250),
+                    () => setTimeout(reveal, 125),
                 );
             }
 
@@ -151,6 +165,7 @@
                 content.classList.add("visible");
                 loaderEl.remove();
                 root.classList.remove("js-intro");
+                unlockContent();
             }
 
             // L'animation ne se joue qu'une fois par session ; on l'ignore

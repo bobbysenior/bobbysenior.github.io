@@ -2,8 +2,9 @@
 <html lang="en" data-page="{{ page.nav_active | default: page.layout }}">
     {% include head.html %}
     <body>
+        <a class="skip-link" href="#main-content" data-i18n="skip.content">Skip to content</a>
         <main>
-            <div class="wrap">
+            <div class="wrap" id="main-content" tabindex="-1">
                 {% include nav.html %}
                 {{ content }}
                 {% include footer.html %}
