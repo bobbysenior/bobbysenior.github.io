@@ -2,16 +2,19 @@
 layout: page
 title: Blog
 nav_active: blog
+description: "Notes and CTF write-ups by Thomas Mezino (al3ph_zero) on cryptography, systems and security."
 permalink: /blog/
 ---
 {% if site.posts.size > 0 %}
 <ul class="projects">
     {% for post in site.posts %}
     <li>
-        <a href="{{ post.url | relative_url }}">
-            <span lang="en" data-language-content="en">{{ post.title_en | default: post.title }}</span>
-            <span lang="fr" data-language-content="fr">{{ post.title_fr | default: post.title }}</span>
-        </a>
+        <h2>
+            <a href="{{ post.url | relative_url }}">
+                <span lang="en" data-language-content="en">{{ post.title_en | default: post.title }}</span>
+                <span lang="fr" data-language-content="fr">{{ post.title_fr | default: post.title }}</span>
+            </a>
+        </h2>
         <time class="post-date" datetime="{{ post.date | date_to_xmlschema }}" data-localized-date>{{ post.date | date: "%B %-d, %Y" }}</time>
         {% if post.description %}
         <p>

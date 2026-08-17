@@ -7,6 +7,9 @@ title_fr: "Note personnelle — blog en construction (article d'exemple)"
 description_en: "Notes I'm leaving myself while setting up the blog. Not a real post yet."
 description_fr: "Quelques notes laissées pendant la mise en place du blog. Ce n'est pas encore un véritable article."
 date: 2025-06-04
+# Gabarit conservé comme référence de format : ni construit, ni listé, ni
+# présent dans le sitemap tant que cette ligne est là.
+published: false
 ---
 
 <div lang="en" data-language-content="en" markdown="1">

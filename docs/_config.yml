@@ -1,12 +1,36 @@
 title: al3ph_zero
-description: Portfolio of Thomas Mezino (al3ph_zero)
+description: >-
+  Portfolio of Thomas Mezino (al3ph_zero), computer engineering student
+  in Réunion — cybersecurity, systems programming and CTF write-ups.
 
-# Served at the domain root (user site), hence an empty baseurl
-url: "https://bobbysenior.github.io"
+# Custom domain served at the root, hence an empty baseurl. This must match
+# CNAME: it is what every canonical, Open Graph and sitemap URL is built from.
+url: "https://thomas.mezino.re"
 baseurl: ""
+
+# Identity reused by the metadata in _includes/head.html
+author:
+  name: Thomas Mezino
+  alternate_name: al3ph_zero
+  email: al3ph_0@proton.me
+  job_title: Computer engineering student
+  # Region only — deliberately no town or street address
+  locality: Réunion
+  country: France
+  github: bobbysenior
+
+lang: en
 
 markdown: kramdown
 highlighter: rouge
+
+# Sans cette ligne, GitHub Pages applique jekyll-theme-primer et publie
+# 136 Ko de CSS inutilisé sur /assets/css/style.css. Le site a son propre
+# style.css, écrit à la main.
+theme: null
+
+plugins:
+  - jekyll-sitemap
 
 # Pretty URLs for blog posts: /blog/<title>/
 permalink: /blog/:title/
@@ -16,6 +40,19 @@ kramdown:
   # Laisser les maths brutes : MathJax s'en charge côté client ($...$ et $$...$$)
   math_engine: null
 
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      # Posts are dated content; the home page carries more weight
+      sitemap:
+        changefreq: monthly
+
+# Jekyll skips dotted paths by default; security.txt has to be opted back in
+include:
+  - .well-known
+
 # Files Jekyll should not copy into the built site
 exclude:
   - Gemfile
@@ -23,3 +60,4 @@ exclude:
   - vendor
   - README.md
   - .claude
+  - .bundle

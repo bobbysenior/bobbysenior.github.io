@@ -8,8 +8,8 @@ title: ""
     <p class="handle">al3ph_zero</p>
     <p class="intro" data-i18n="home.intro">
         Hey! I'm an engineering student passionate about computer science. On
-        this page, you'll find informations about my school projects, personal
-        projects, as well as contact information. 
+        this page, you'll find information about my school and personal
+        projects, as well as ways to contact me.
     </p>
 </header>
 
@@ -59,17 +59,17 @@ title: ""
     <ul class="projects">
         <li>
             <span class="project__name" data-i18n="home.saine.name"
-                >SAINE / USB-SAS — secure USB clean station (Kodetis,
-                internship)</span
+                >SAINE / USB-SAS — secure USB clean station
+                (<a href="https://kodetis.com">Kodetis</a>, internship)</span
             >
             <p data-i18n="home.saine.body">
                 SAINE is a hardened fork of the CEA's
                 <a href="https://github.com/cea-sec/usbsas">usbsas</a>
                 framework: a standalone kiosk that copies files from an
                 untrusted USB device to a trusted destination, so no workstation
-                ever touches the device. The design is microkernel-style, every
+                ever touches the device. The design is microkernel-style: every
                 USB, SCSI and filesystem parser runs as its own user-space
-                process under a dedicated seccomp and landlock policy, and the
+                process under a dedicated seccomp and Landlock policy, and the
                 whole pipeline resets between transfers. On top of the upstream
                 project I added an encrypted upload destination over VPN,
                 antivirus deep scanning, a QR-code transfer report and recipient
@@ -113,6 +113,9 @@ title: ""
         </li>
         <li>
             <a href="https://github.com/bobbysenior/ndi-ees-meci">Sésame</a>
+            <span class="project__name" data-i18n="home.sesame.context"
+                >&mdash; hackathon project</span
+            >
             <p data-i18n="home.sesame.body">
                 An alternative authentication system that replaces the usual
                 alphanumeric password with a culinary one: instead of typing
@@ -120,7 +123,8 @@ title: ""
                 ingredients, each one mapping to a character. The idea is to
                 rely on procedural memory rather than rote recall. Built with a
                 Laravel backend and vanilla JavaScript drag-and-drop during the
-                Nuit de l'Info hackathon.
+                <a href="https://www.nuitdelinfo.com/">Nuit de l'Info</a>
+                hackathon.
             </p>
             <div class="shots">
                 <img
@@ -145,6 +149,9 @@ title: ""
         </li>
         <li>
             <a href="https://github.com/bobbysenior/quizzia-vibe">Quizia</a>
+            <span class="project__name" data-i18n="home.quizia.context"
+                >&mdash; academic project</span
+            >
             <p data-i18n="home.quizia.body">
                 An AI-powered quiz application: describe a topic and a number of
                 questions, and the AI writes the whole quiz in seconds, ready to

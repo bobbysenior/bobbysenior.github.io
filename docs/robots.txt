@@ -1,0 +1,10 @@
+---
+permalink: /robots.txt
+sitemap: false
+---
+# https://thomas.mezino.re/robots.txt
+
+User-agent: *
+Allow: /
+
+Sitemap: {{ '/sitemap.xml' | absolute_url }}

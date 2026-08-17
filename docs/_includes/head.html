@@ -57,7 +57,7 @@
             // apparaît quand même.
             setTimeout(function () {
                 document.documentElement.classList.remove("js-intro");
-            }, 4000);
+            }, 2000);
             setTimeout(function () {
                 document.documentElement.classList.remove("js-i18n");
             }, 1500);
@@ -65,8 +65,12 @@
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+    {%- comment -%}
+    Le nom complet doit figurer dans le <title> de chaque page : c'est la
+    requête sur laquelle le site doit ressortir. Le pseudo vient en second.
+    {%- endcomment -%}
     {%- capture page_title -%}
-    al3ph_zero{% if page.title and page.title != "" %} — {{ page.title }}{% endif %}
+    {% if page.title and page.title != "" %}{{ page.title }} — {{ site.author.name }}{% else %}{{ site.author.name }} — {{ site.title }} · {{ site.author.job_title }}{% endif %}
     {%- endcapture -%}
     {%- assign page_desc = page.description | default: site.description | strip_html | normalize_whitespace | truncate: 160 -%}
     {%- assign page_url = page.url | absolute_url -%}
@@ -74,8 +78,10 @@
 
     <title>{{ page_title }}</title>
     <meta name="description" content="{{ page_desc | escape }}" />
+    <meta name="author" content="{{ site.author.name }}" />
     <link rel="canonical" href="{{ page_url }}" />
-    {% if page.noindex %}<meta name="robots" content="noindex" />{% endif %}
+    {% if page.noindex %}<meta name="robots" content="noindex, follow" />{% else %}<meta name="robots" content="index, follow, max-image-preview:large" />{% endif %}
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
 
     <!-- Partage : Open Graph / Twitter Card -->
     <meta property="og:site_name" content="al3ph_zero" />
@@ -84,6 +90,9 @@
     <meta property="og:description" content="{{ page_desc | escape }}" />
     <meta property="og:url" content="{{ page_url }}" />
     <meta property="og:locale" content="en_US" />
+    <!-- Une seule URL sert les deux langues (bascule côté client), d'où une
+         locale alternative plutôt que des balises hreflang. -->
+    <meta property="og:locale:alternate" content="fr_FR" />
     <meta property="og:image" content="{{ og_image }}" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="631" />
@@ -92,6 +101,78 @@
     <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}" />
     {% endif %}
     <meta name="twitter:card" content="summary_large_image" />
+
+    {%- comment -%}
+    Données structurées. La page d'accueil se déclare comme ProfilePage
+    décrivant une Person : c'est ce que Google attend pour rattacher le site
+    à une identité et alimenter un panneau de connaissance sur le nom.
+    Volontairement sans adresse ni téléphone : seulement la région.
+    {%- endcomment -%}
+    {%- if page.layout == "home" -%}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      "@id": "{{ '/' | absolute_url }}#profilepage",
+      "url": "{{ '/' | absolute_url }}",
+      "name": {{ page_title | strip | jsonify }},
+      "inLanguage": ["en", "fr"],
+      "mainEntity": {
+        "@type": "Person",
+        "@id": "{{ '/' | absolute_url }}#person",
+        "name": {{ site.author.name | jsonify }},
+        "alternateName": {{ site.author.alternate_name | jsonify }},
+        "jobTitle": {{ site.author.job_title | jsonify }},
+        "description": {{ site.description | strip_html | normalize_whitespace | strip | jsonify }},
+        "url": "{{ '/' | absolute_url }}",
+        "image": "{{ og_image }}",
+        "email": "mailto:{{ site.author.email }}",
+        "address": {
+          "@type": "PostalAddress",
+          "addressRegion": {{ site.author.locality | jsonify }},
+          "addressCountry": "FR"
+        },
+        "knowsLanguage": ["fr", "en"],
+        "knowsAbout": [
+          "Cybersecurity",
+          "Systems programming",
+          "Rust",
+          "Linux",
+          "Capture the flag",
+          "Cryptography"
+        ],
+        "sameAs": [
+          "https://github.com/{{ site.author.github }}"
+        ]
+      }
+    }
+    </script>
+    {%- elsif page.layout == "post" -%}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": {{ page.title | jsonify }},
+      "description": {{ page_desc | jsonify }},
+      "url": "{{ page_url }}",
+      "datePublished": "{{ page.date | date_to_xmlschema }}",
+      "dateModified": "{{ page.date | date_to_xmlschema }}",
+      "image": "{{ og_image }}",
+      "author": {
+        "@type": "Person",
+        "@id": "{{ '/' | absolute_url }}#person",
+        "name": {{ site.author.name | jsonify }},
+        "url": "{{ '/' | absolute_url }}"
+      },
+      "publisher": {
+        "@type": "Person",
+        "@id": "{{ '/' | absolute_url }}#person",
+        "name": {{ site.author.name | jsonify }}
+      },
+      "mainEntityOfPage": "{{ page_url }}"
+    }
+    </script>
+    {%- endif -%}
 
     <link rel="icon" href="{{ '/favicon.ico' | relative_url }}" sizes="16x16 32x32 48x48 64x64" />
     <link rel="apple-touch-icon" href="{{ '/apple-touch-icon.png' | relative_url }}" />
@@ -113,10 +194,16 @@
             },
         };
     </script>
+    <!-- Version figée : `mathjax@3` flotte, ce qui rendrait tout hachage SRI
+         invalide au prochain correctif publié. -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
     <script
         id="MathJax-script"
         async
-        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+        src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"
+        integrity="sha384-Wuix6BuhrWbjDBs24bXrjf4ZQ5aFeFWBuKkFekO2t8xFU0iNaLQfp2K6/1Nxveei"
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
     ></script>
     {% endif %}
 </head>
