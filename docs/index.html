@@ -4,78 +4,54 @@ nav_active: home
 title: ""
 ---
 <header class="hero">
-    <h1>Thomas Mezino</h1>
-    <p class="handle">al3ph_zero</p>
-    <p class="intro" data-i18n="home.intro">
-        Hey! I'm an engineering student passionate about computer science. On
-        this page, you'll find information about my school and personal
-        projects, as well as ways to contact me.
-    </p>
-</header>
-
-<p class="logos-label" data-i18n="home.tools">Languages and tools</p>
-<div class="logos" aria-label="Technologies I use" data-i18n-aria-label="home.tools.label">
-    <div class="logos__track" aria-hidden="true">
-        <span class="logos__item" style="--src: url('images/logos/python.svg')"></span>
-        <span class="logos__item" style="--src: url('images/logos/c.svg')"></span>
-        <span class="logos__item" style="--src: url('images/logos/javascript.svg')"></span>
-        <span class="logos__item" style="--src: url('images/logos/typescript.svg')"></span>
-        <span class="logos__item" style="--src: url('images/logos/rust.svg')"></span>
-        <span class="logos__item" style="--src: url('images/logos/php.svg')"></span>
-        <span class="logos__item" style="--src: url('images/logos/html5.svg')"></span>
-        <span class="logos__item" style="--src: url('images/logos/css.svg')"></span>
-        <span class="logos__item" style="--src: url('images/logos/vue.svg')"></span>
-        <span class="logos__item" style="--src: url('images/logos/laravel.svg')"></span>
-        <span class="logos__item" style="--src: url('images/logos/bash.svg')"></span>
-        <span class="logos__item" style="--src: url('images/logos/docker.svg')"></span>
-        <span class="logos__item" style="--src: url('images/logos/vscode.svg')"></span>
-        <span class="logos__item" style="--src: url('images/logos/gitlab.svg')"></span>
-        <span class="logos__item" style="--src: url('images/logos/linux.svg')"></span>
-        <span class="logos__item" style="--src: url('images/logos/windows.svg')"></span>
-        <span class="logos__item" style="--src: url('images/logos/kali.svg')"></span>
-        <!-- duplicata pour la boucle infinie -->
-        <span class="logos__item" style="--src: url('images/logos/python.svg')"></span>
-        <span class="logos__item" style="--src: url('images/logos/c.svg')"></span>
-        <span class="logos__item" style="--src: url('images/logos/javascript.svg')"></span>
-        <span class="logos__item" style="--src: url('images/logos/typescript.svg')"></span>
-        <span class="logos__item" style="--src: url('images/logos/rust.svg')"></span>
-        <span class="logos__item" style="--src: url('images/logos/php.svg')"></span>
-        <span class="logos__item" style="--src: url('images/logos/html5.svg')"></span>
-        <span class="logos__item" style="--src: url('images/logos/css.svg')"></span>
-        <span class="logos__item" style="--src: url('images/logos/vue.svg')"></span>
-        <span class="logos__item" style="--src: url('images/logos/laravel.svg')"></span>
-        <span class="logos__item" style="--src: url('images/logos/bash.svg')"></span>
-        <span class="logos__item" style="--src: url('images/logos/docker.svg')"></span>
-        <span class="logos__item" style="--src: url('images/logos/vscode.svg')"></span>
-        <span class="logos__item" style="--src: url('images/logos/gitlab.svg')"></span>
-        <span class="logos__item" style="--src: url('images/logos/linux.svg')"></span>
-        <span class="logos__item" style="--src: url('images/logos/windows.svg')"></span>
-        <span class="logos__item" style="--src: url('images/logos/kali.svg')"></span>
+    <svg
+        class="hero__mark"
+        viewBox="0 0 400 400"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+        focusable="false"
+    >
+        <text class="hero__aleph" x="175" y="250">&#8501;</text>
+        <text class="hero__zero" x="285" y="300">&#8320;</text>
+    </svg>
+    <div class="hero__text">
+        <p class="hero__handle">al3ph_zero</p>
+        <h1>Thomas Mezino</h1>
+        <p class="intro" data-i18n="home.intro">
+            Engineering student. I work on system security and
+            Rust, I play CTFs, and I bring a little too much math into
+            everything.
+        </p>
     </div>
-</div>
+</header>
 
 <section id="projects">
     <h2 data-i18n="home.projects">Projects</h2>
     <ul class="projects">
-        <li>
-            <a href="https://github.com/bobbysenior/combava">combava</a>
-            <span class="project__name" data-i18n="home.combava.context"
-                >&mdash; personal project</span
-            >
-            <p data-i18n="home.combava.body">
-                A very opinionated Markdown to PDF generator. You write
-                Markdown with a small TOML header, and combava gives you a
-                finished report: no style to tune and no template to set up.
-                It makes the choices for you: one template, French typography,
-                a closed list of header keys, and mistakes such as broken
-                links, remote images or citations without a bibliography stop
-                the build. A failed build never destroys the previous PDF. A
-                core library transpiles Markdown to Typst, with diagnostics
-                that point back to the exact line and column of the source,
-                and Typst is built in, so there is no LaTeX or Pandoc to
-                install. Rust, Typst. Read the
-                <a href="https://thomas.mezino.re/combava">documentation</a>.
+        <li class="project project--featured">
+            <div class="project__head">
+                <h3><a href="https://github.com/bobbysenior/combava">combava</a></h3>
+                <span class="project__meta" data-i18n="home.combava.context">Personal project</span>
+            </div>
+            <p class="project__tagline" data-i18n="home.combava.tagline">
+                Markdown in, finished PDF out: an opinionated report generator
+                with nothing to configure.
             </p>
+            <p data-i18n="home.combava.body">
+                You write Markdown with a small TOML header, and combava gives
+                you a finished report: no style to tune and no template to set
+                up. It makes the choices for you: one template, French
+                typography, a closed list of header keys, and mistakes such as
+                broken links, remote images or citations without a bibliography
+                stop the build. A failed build never destroys the previous PDF.
+                A core library transpiles Markdown to Typst, with diagnostics
+                that point back to the exact line and column of the source, and
+                Typst is built in, so there is no LaTeX or Pandoc to install.
+                Read the <a href="https://thomas.mezino.re/combava">documentation</a>.
+            </p>
+            <ul class="tags">
+                <li>Rust</li><li>Typst</li><li>TOML</li>
+            </ul>
             <img
                 src="images/combava.svg"
                 width="1200"
@@ -86,11 +62,17 @@ title: ""
                 data-i18n-alt="home.combava.alt"
             />
         </li>
-        <li>
-            <span class="project__name" data-i18n="home.saine.name"
-                >SAINE / USB-SAS — secure USB clean station
-                (<a href="https://kodetis.com">Kodetis</a>, internship)</span
-            >
+        <li class="project project--featured">
+            <div class="project__head">
+                <h3>SAINE / USB-SAS</h3>
+                <span class="project__meta" data-i18n="home.saine.context"
+                    >Internship at <a href="https://kodetis.com">Kodetis</a></span
+                >
+            </div>
+            <p class="project__tagline" data-i18n="home.saine.tagline">
+                A hardened kiosk that cleans files from untrusted USB drives
+                before they reach the network.
+            </p>
             <p data-i18n="home.saine.body">
                 SAINE is a hardened fork of the CEA's
                 <a href="https://github.com/cea-sec/usbsas">usbsas</a>
@@ -106,8 +88,11 @@ title: ""
                 reproducible NixOS kiosk images for Raspberry Pi 5 (aarch64) and
                 Zimaboard 2 (x86_64), full Nix cross-compilation, a signed update
                 server, a Dagger CI/CD pipeline, and system hardening validated
-                with Lynis. Rust, Nix, protobuf, ClamAV.
+                with Lynis.
             </p>
+            <ul class="tags">
+                <li>Rust</li><li>Nix</li><li>seccomp</li><li>Landlock</li><li>protobuf</li><li>ClamAV</li><li>Dagger</li>
+            </ul>
             <img
                 src="images/saine.svg"
                 width="820"
@@ -118,53 +103,61 @@ title: ""
                 data-i18n-alt="home.saine.alt"
             />
         </li>
-        <li>
-            <a href="https://github.com/bobbysenior/uml2code-mirror">uml2code</a>
-            <p data-i18n="home.uml.body">
-                A multi-language code generator that turns PlantUML class
-                diagrams into object-oriented source code in C++, Java and
-                Python. It parses classes, interfaces, enumerations and the
-                usual relationships (inheritance, implementation, composition,
-                aggregation and association), and relies on the Abstract Factory
-                pattern to keep diagram parsing fully decoupled from
-                language-specific generation. An academic project carried out by
-                a team of three.
-            </p>
-            <img
-                src="images/uml2code_core.webp"
-                width="2181"
-                height="1363"
-                loading="lazy"
-                decoding="async"
-                alt="uml2code core class diagram"
-                data-i18n-alt="home.uml.alt"
-            />
-        </li>
-        <li>
-            <a href="https://github.com/bobbysenior/ndi-ees-meci">Sésame</a>
-            <span class="project__name" data-i18n="home.sesame.context"
-                >&mdash; hackathon project</span
-            >
-            <p data-i18n="home.sesame.body">
-                An alternative authentication system that replaces the usual
-                alphanumeric password with a culinary one: instead of typing
-                characters, you build a recipe by dragging and dropping
-                ingredients, each one mapping to a character. The idea is to
-                rely on procedural memory rather than rote recall. Built with a
-                Laravel backend and vanilla JavaScript drag-and-drop during the
-                <a href="https://www.nuitdelinfo.com/">Nuit de l'Info</a>
-                hackathon.
-            </p>
-            <div class="shots">
+        <li class="project">
+            <div class="project__body">
+                <div class="project__head">
+                    <h3><a href="https://github.com/bobbysenior/uml2code-mirror">uml2code</a></h3>
+                    <span class="project__meta" data-i18n="home.uml.context">Academic project, team of three</span>
+                </div>
+                <p class="project__tagline" data-i18n="home.uml.tagline">
+                    PlantUML class diagrams turned into C++, Java and Python
+                    code.
+                </p>
+                <p data-i18n="home.uml.body">
+                    It parses classes, interfaces, enumerations and the usual
+                    relationships (inheritance, implementation, composition,
+                    aggregation and association), and relies on the Abstract
+                    Factory pattern to keep diagram parsing fully decoupled from
+                    language-specific generation.
+                </p>
+                <ul class="tags">
+                    <li>PlantUML</li><li>Abstract Factory</li><li>C++</li><li>Java</li><li>Python</li>
+                </ul>
+            </div>
+            <div class="project__media">
                 <img
-                    src="images/sesame_index.webp"
-                    width="849"
-                    height="929"
+                    src="images/uml2code_core.webp"
+                    width="2181"
+                    height="1363"
                     loading="lazy"
                     decoding="async"
-                    alt="Sésame home page"
-                    data-i18n-alt="home.sesame.home.alt"
+                    alt="uml2code core class diagram"
+                    data-i18n-alt="home.uml.alt"
                 />
+            </div>
+        </li>
+        <li class="project">
+            <div class="project__body">
+                <div class="project__head">
+                    <h3><a href="https://github.com/bobbysenior/ndi-ees-meci">Sésame</a></h3>
+                    <span class="project__meta" data-i18n="home.sesame.context"
+                        >Hackathon, <a href="https://www.nuitdelinfo.com/">Nuit de l'Info</a></span
+                    >
+                </div>
+                <p class="project__tagline" data-i18n="home.sesame.tagline">
+                    Log in by cooking: a password made of recipe ingredients.
+                </p>
+                <p data-i18n="home.sesame.body">
+                    Instead of typing characters, you build a recipe by dragging
+                    and dropping ingredients, each one mapping to a character.
+                    The idea is to rely on procedural memory rather than rote
+                    recall.
+                </p>
+                <ul class="tags">
+                    <li>Laravel</li><li>PHP</li><li>JavaScript</li>
+                </ul>
+            </div>
+            <div class="project__media">
                 <img
                     src="images/sesame_login.webp"
                     width="997"
@@ -174,31 +167,47 @@ title: ""
                     alt="Sésame login page"
                     data-i18n-alt="home.sesame.login.alt"
                 />
+                <img
+                    src="images/sesame_index.webp"
+                    width="849"
+                    height="929"
+                    loading="lazy"
+                    decoding="async"
+                    alt="Sésame home page"
+                    data-i18n-alt="home.sesame.home.alt"
+                />
             </div>
         </li>
-        <li>
-            <a href="https://github.com/bobbysenior/quizzia-vibe">Quizia</a>
-            <span class="project__name" data-i18n="home.quizia.context"
-                >&mdash; academic project</span
-            >
-            <p data-i18n="home.quizia.body">
-                An AI-powered quiz application: describe a topic and a number of
-                questions, and the AI writes the whole quiz in seconds, ready to
-                share or keep private. Quizzes can also be built by hand, and a
-                public catalog offers search, filtering and gameplay tracking.
-                Built with Next.js, React, TypeScript and Tailwind CSS on top of
-                Supabase, with question generation powered by the Cerebras Cloud
-                SDK.
-            </p>
-            <img
-                src="images/quizzia.webp"
-                width="2086"
-                height="1347"
-                loading="lazy"
-                decoding="async"
-                alt="Quizia landing page"
-                data-i18n-alt="home.quizia.alt"
-            />
+        <li class="project">
+            <div class="project__body">
+                <div class="project__head">
+                    <h3><a href="https://github.com/bobbysenior/quizzia-vibe">Quizia</a></h3>
+                    <span class="project__meta" data-i18n="home.quizia.context">Academic project</span>
+                </div>
+                <p class="project__tagline" data-i18n="home.quizia.tagline">
+                    Describe a topic, get a complete quiz in seconds.
+                </p>
+                <p data-i18n="home.quizia.body">
+                    The AI writes the whole quiz from a topic and a number of
+                    questions, ready to share or keep private. Quizzes can also
+                    be built by hand, and a public catalog offers search,
+                    filtering and gameplay tracking.
+                </p>
+                <ul class="tags">
+                    <li>Next.js</li><li>TypeScript</li><li>Tailwind CSS</li><li>Supabase</li><li>Cerebras</li>
+                </ul>
+            </div>
+            <div class="project__media">
+                <img
+                    src="images/quizzia.webp"
+                    width="2086"
+                    height="1347"
+                    loading="lazy"
+                    decoding="async"
+                    alt="Quizia landing page"
+                    data-i18n-alt="home.quizia.alt"
+                />
+            </div>
         </li>
     </ul>
 </section>
@@ -207,36 +216,32 @@ title: ""
     <h2>CTF</h2>
     <ul class="ctf">
         <li>
-            <div class="ctf__head">
-                <span class="ctf__name">BSides CTF</span>
-                <span class="ctf__rank" data-i18n="home.ctf.rank3">3rd / 19</span>
-            </div>
-            <p class="ctf__meta">2025 · <span data-i18n="home.ctf.team">Team</span> 404_slip_not_found</p>
+            <span class="ctf__rank" data-i18n="home.ctf.rank3">3rd <small>/ 19</small></span>
+            <span class="ctf__name">BSides CTF</span>
+            <span class="ctf__meta">2025 · <span data-i18n="home.ctf.team">Team</span> 404_slip_not_found</span>
         </li>
         <li>
-            <div class="ctf__head">
-                <span class="ctf__name">OCOI CTF</span>
-                <span class="ctf__rank" data-i18n="home.ctf.rank10">10th / 96</span>
-            </div>
-            <p class="ctf__meta">2025 · <span data-i18n="home.ctf.team">Team</span> 404_sl33p_n0t_f0und</p>
+            <span class="ctf__rank" data-i18n="home.ctf.rank10">10th <small>/ 96</small></span>
+            <span class="ctf__name">OCOI CTF</span>
+            <span class="ctf__meta">2025 · <span data-i18n="home.ctf.team">Team</span> 404_sl33p_n0t_f0und</span>
         </li>
         <li>
-            <div class="ctf__head">
-                <span class="ctf__name">Hero CTF</span>
-                <span class="ctf__rank" data-i18n="home.ctf.rank286">286th / 1052</span>
-            </div>
-            <p class="ctf__meta">2025 · <span data-i18n="home.ctf.team">Team</span> ESIROI</p>
+            <span class="ctf__rank" data-i18n="home.ctf.rank286">286th <small>/ 1052</small></span>
+            <span class="ctf__name">Hero CTF</span>
+            <span class="ctf__meta">2025 · <span data-i18n="home.ctf.team">Team</span> ESIROI</span>
         </li>
     </ul>
+    <p class="section__more">
+        <a href="{{ '/blog/' | relative_url }}" data-i18n="home.ctf.writeups">Read my write-ups &rarr;</a>
+    </p>
 </section>
 
-<section class="contact">
+<section id="contact" class="contact">
     <h2>Contact</h2>
-    <p>
-        <span data-i18n="home.contact.mail">Professional email —</span>
-        <a href="mailto:al3ph_0@proton.me">al3ph_0@proton.me</a>
-    </p>
-    <p>
-        <a href="https://github.com/bobbysenior">Github</a>
-    </p>
+    <dl class="contact__list">
+        <dt data-i18n="home.contact.mail">Email</dt>
+        <dd><a href="mailto:al3ph_0@proton.me">al3ph_0@proton.me</a></dd>
+        <dt>GitHub</dt>
+        <dd><a href="https://github.com/bobbysenior">github.com/bobbysenior</a></dd>
+    </dl>
 </section>
