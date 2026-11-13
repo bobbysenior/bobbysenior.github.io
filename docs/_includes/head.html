@@ -44,20 +44,18 @@
                 }
             } catch (e) {}
 
-            // Le loader n'est activé que si JS tourne et que l'utilisateur
-            // n'a pas demandé moins d'animations. Sans cette classe, le
-            // contenu est visible et le loader n'est jamais affiché.
-            var reduce =
-                window.matchMedia &&
-                window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-            if (!reduce) {
-                document.documentElement.classList.add("js-intro");
+            // Le tracé du ℵ₀ dans le hero (CSS pur) ne se joue qu'une fois
+            // par session : aux visites suivantes, le symbole est déjà plein.
+            // Il ne bloque jamais le contenu, d'où l'absence de filet.
+            if (document.documentElement.getAttribute("data-page") === "home") {
+                try {
+                    if (sessionStorage.getItem("introPlayed")) {
+                        document.documentElement.classList.add("intro-seen");
+                    } else {
+                        sessionStorage.setItem("introPlayed", "1");
+                    }
+                } catch (e) {}
             }
-            // Filet de sécurité : si le script du loader échoue, le contenu
-            // apparaît quand même.
-            setTimeout(function () {
-                document.documentElement.classList.remove("js-intro");
-            }, 2000);
             setTimeout(function () {
                 document.documentElement.classList.remove("js-i18n");
             }, 1500);
@@ -179,6 +177,8 @@
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)" />
 
+    <!-- Polices auto-hébergées (OFL) : aucune requête vers un tiers. -->
+    <link rel="preload" href="{{ '/assets/fonts/source-serif-4-latin-wght-normal.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="{{ '/style.css' | relative_url }}" />
     <script defer src="{{ '/assets/js/i18n.js' | relative_url }}"></script>
     {% if page.layout == "post" %}
