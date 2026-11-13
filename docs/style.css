@@ -33,6 +33,7 @@
     --accent: #22d3ee; /* cyan */
     /* Teinte des bordures/surfaces translucides : blanc en sombre */
     --overlay-rgb: 255, 255, 255;
+    --danger: #f87171;
     color-scheme: dark;
 }
 [data-theme="light"] {
@@ -40,6 +41,7 @@
     --fg: #0a0a0a;
     --accent: #0e7490; /* cyan plus foncé, lisible sur blanc */
     --overlay-rgb: 0, 0, 0;
+    --danger: #b91c1c;
     color-scheme: light;
 }
 body {
@@ -509,6 +511,159 @@ ul.projects li > h2 > a {
 ul.projects li > h2 > a:hover {
     color: var(--accent);
     border-color: var(--accent);
+}
+
+/* ---------- Schéma SAINE (SVG en ligne, suit le thème) ---------- */
+.saine-fig {
+    margin-top: 1.75rem;
+    padding: 1.25rem 1rem 1rem;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+}
+.saine-fig__svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+}
+.sf-frame {
+    fill: rgba(var(--overlay-rgb), 0.025);
+    stroke: rgba(var(--overlay-rgb), 0.28);
+    stroke-dasharray: 6 5;
+}
+.sf-tag {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    fill: var(--muted);
+}
+.sf-txt {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    text-anchor: middle;
+    fill: var(--muted);
+}
+.sf-out {
+    text-anchor: start;
+}
+.sf-strong {
+    fill: var(--fg);
+    font-weight: 600;
+}
+.sf-pipe {
+    fill: none;
+    stroke: rgba(var(--overlay-rgb), 0.2);
+    stroke-width: 1.2;
+}
+.sf-ctl {
+    fill: none;
+    stroke: rgba(var(--overlay-rgb), 0.3);
+    stroke-dasharray: 2 4;
+}
+.sf-pill,
+.sf-cell,
+.sf-badge {
+    fill: var(--bg);
+    stroke: rgba(var(--overlay-rgb), 0.45);
+    stroke-width: 1.2;
+}
+.sf-ico {
+    fill: none;
+    stroke: var(--fg);
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+.sf-lockico {
+    stroke: var(--muted);
+    stroke-width: 2.2;
+}
+.sf-new .sf-cell,
+.sf-new .sf-badge {
+    stroke: var(--accent);
+}
+.sf-new .sf-ico,
+.sf-new .sf-lbl {
+    stroke: var(--accent);
+}
+.sf-new .sf-lbl {
+    stroke: none;
+    fill: var(--accent);
+}
+.sf-mini {
+    stroke-width: 2.4;
+}
+.sf-new .sf-mini {
+    fill: var(--bg);
+}
+.sf-usb rect {
+    fill: var(--bg);
+    stroke: var(--fg);
+    stroke-width: 1.4;
+}
+.sf-usb .sf-pin {
+    fill: var(--fg);
+    stroke: none;
+}
+.sf-usb--in rect {
+    stroke: var(--danger);
+    stroke-dasharray: 4 3;
+}
+.sf-usb--in .sf-pin {
+    fill: var(--danger);
+}
+/* Paquets : gris tant qu'ils ne sont pas analysés, cyan une fois sains,
+   rouges et arrêtés quand l'analyse les rejette. */
+.sf-p {
+    fill: var(--muted);
+    opacity: 0;
+    animation: sf-ok 7s linear infinite;
+}
+.sf-bad {
+    animation-name: sf-bad;
+}
+@keyframes sf-ok {
+    0% { transform: translateX(0); opacity: 0; fill: var(--muted); }
+    6% { opacity: 0.9; }
+    79% { fill: var(--muted); }
+    84% { fill: var(--accent); }
+    94% { opacity: 0.9; }
+    100% { transform: translateX(522px); opacity: 0; fill: var(--accent); }
+}
+@keyframes sf-bad {
+    0% { transform: translateX(0); opacity: 0; fill: var(--muted); }
+    6% { opacity: 0.9; }
+    80% { transform: translateX(418px); fill: var(--muted); opacity: 0.9; }
+    84% { transform: translateX(422px); fill: var(--danger); opacity: 1; }
+    100% { transform: translateX(422px); fill: var(--danger); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .sf-p {
+        animation-play-state: paused;
+    }
+}
+.saine-fig figcaption {
+    margin-top: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--muted);
+}
+.saine-fig__swatch {
+    width: 1.2rem;
+    height: 2px;
+    background: var(--accent);
+}
+@media (max-width: 560px) {
+    .saine-fig {
+        padding: 0.75rem 0.5rem;
+    }
+    .sf-lbl,
+    .sf-tag {
+        display: none;
+    }
 }
 
 /* ---------- Palmarès CTF ---------- */
